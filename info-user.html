@@ -14,13 +14,45 @@
     </style>
 
     <!-- local DOM goes here -->
-    <span>User: AAA123</span>
+    <span>ho va ten: {{fullName}}</span>
+    <br>
+    <span>tuoi: {{tuoi}}</span>
+    <br>
+    <span>bo phan: {{boPhan}}</span>
+    <br>
+
+    <input type="text" value="{{name::input}}" placeholder="Enter your name">
+    
+    <p>Hello, [[name]]!</p>
+
+    <div id="event-click-test">Event Click</div>
+
+
   </template>
 
   <script>
   Polymer({
     is: 'info-user',
+
+  properties: {
+    boPhan: {
+      type: String,
+      value: "Dev"
+    }
+  },
+
+  listeners: {
+    'event-click-test.tap': 'eventClickTest',
+  },
+
+  eventClickTest: function(e) {
+    alert("eventClickTest");
+  }
+
+
   });
+
+  
   </script>
 
 </dom-module>
