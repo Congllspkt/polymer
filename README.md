@@ -9,5 +9,4 @@ polymer serve
 
 http://localhost:8081/components/icon-toggle/demo/
 
-http://localhost:8081/components/x/call-hello/
-
+http://localhost:8081/components/x/1-call-hello/
