@@ -10,3 +10,15 @@ polymer serve
 http://localhost:8081/components/icon-toggle/demo/
 
 http://localhost:8081/components/x/1-call-hello/
+
+
+
+life cycle
+
+access link 
+
+![alt text](image.png)
+
+
+
+

@@ -23,6 +23,19 @@
   <script>
     Polymer({
       is: 'call-hello',
+
+      created: function() {
+        console.log("Lifecycle: created")
+      },
+      ready: function() {
+        console.log("Lifecycle: ready")
+      },
+      attached: function() {
+        console.log("Lifecycle: attached")
+      },
+      detached: function() {
+        console.log("Lifecycle: detached")
+      },
     });
     </script>
 </dom-module>
