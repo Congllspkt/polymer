@@ -21,13 +21,27 @@
     <span>bo phan: {{boPhan}}</span>
     <br>
 
-    <input type="text" value="{{name::input}}" placeholder="Enter your name">
-    
-    <p>Hello, [[name]]!</p>
+    <!-- Two-Way Binding -->
+    <input type="text" value="{{name_aa::input}}" placeholder="Enter your name">
+    <p>Hello, {{name_aa}}!</p>
+    <p>Current value: [[name_aa]]</p>
 
+    <!-- Observer -->
+    <p>Uppercase value: [[uppercaseValue]]</p>
+
+
+    <!-- event -->
     <div id="event-click-test">Event Click</div>
 
-    <div id = "editText"></div>
+    <br><br>
+    <input id="text1" type="text" />
+    <br><br>
+    <!-- Computed  -->
+    <input type="number" value="{{valueA::input}}" placeholder="Enter first string" />
+    <input type="number" value="{{valueB::input}}" placeholder="Enter second string" />
+    <p>Value A: [[valueA]]</p>
+    <p>Value B: [[valueB]]</p>
+    <p>Concate String: [[concateString]]</p>
 
 
   </template>
@@ -40,8 +54,34 @@
     boPhan: {
       type: String,
       value: "Dev"
-    }
+    }, 
+
+    name_aa: {
+          type: String,
+          value: 'edit text'
+        }, 
+        uppercaseValue: {
+          type: String,
+          value: ''
+        }, 
+
+        valueA: {
+          type: String,
+          value: ''
+        },
+        valueB: {
+          type: String,
+          value: ''
+        },
+        concateString: {
+          type: String,
+          computed: '_concateString(valueA, valueB)'
+        }
   },
+
+  observers: [
+        '_updateUppercaseValue(name_aa)'
+      ],
 
   listeners: {
     'event-click-test.tap': 'eventClickTest',
@@ -52,10 +92,16 @@
   },
 
   ready: function() {
-    this.$.editText.value = "edit text"
+    this.$.text1.value = "edit text sss"
   },
 
+  _updateUppercaseValue: function(newValue) {
+        this.uppercaseValue = newValue.toUpperCase();
+      }, 
 
+      _concateString: function(a, b) {
+        return a +" "+ b;
+      }
   });
 
   
