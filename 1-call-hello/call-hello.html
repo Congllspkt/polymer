@@ -15,9 +15,9 @@
       };
     </style>
 
-    <h3>hello !!!</h3>
+    <h3>hello !!! {{tuoi}}</h3>
 
-    <info-user tuoi = '18' full-name ="Nguyen Van A"></info-user>
+    <info-user tuoi = '{{tuoi}}' full-name ="Nguyen Van A"></info-user>
   </template>
 
   <script>
@@ -28,6 +28,7 @@
         console.log("Lifecycle: created")
       },
       ready: function() {
+        this.tuoi = 10
         console.log("Lifecycle: ready")
       },
       attached: function() {

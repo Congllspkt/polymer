@@ -51,6 +51,12 @@
     is: 'info-user',
 
   properties: {
+
+    tuoi: {
+      type: Number,
+      notify: true
+    },
+
     boPhan: {
       type: String,
       value: "Dev"
@@ -97,6 +103,7 @@
 
   _updateUppercaseValue: function(newValue) {
         this.uppercaseValue = newValue.toUpperCase();
+        this.tuoi = this.tuoi + 1
       }, 
 
       _concateString: function(a, b) {
