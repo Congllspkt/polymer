@@ -18,7 +18,3 @@ life cycle
 access link 
 
 ![alt text](image.png)
-
-
-
-
