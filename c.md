@@ -186,6 +186,8 @@ item-select
 
 ④
 select-item
+
+
 13. This is an attack that causes a user to request a specific website to perform an action (modification, deletion, registration, etc.) intended by the attacker without the user's consent. This is also called cross-site request forgery. What verification method is being used to prevent this? (5 points)
 http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381583
 
@@ -266,3 +268,157 @@ The result when calling myFunction(null, 2); is: null
 The result when calling myFunction("1", 2); is: 12
 
 The result when calling myFunction("", 2); is: null
+
+5. What TransactionManager object are you using to use multiple transactions? (5 points)
+http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80382828
+
+※ Refer to Development Environment Settings (Database)
+
+①
+`ChainedTransactionManager`
+
+②
+DataSourceTransactionManager
+
+③
+ DefaultTransactionManagerLookup
+
+④
+JtaTransactionManager
+
+
+7. How to set an extension that cannot be attached in the attachment component? (5 points)
+https://smartx-10.emro.co.kr/devops.do 
+
+※ Other > See attached file
+
+①
+limit-extension
+
+②
+restrict-extention
+
+③
+ban extension
+
+④
+prohibit-extension
+
+11. What component is used when indicating From-To for year/month? (5 points)
+https://smartx-10.emro.co.kr/devops.do
+※ Field > See main fields
+
+①
+sc-period-date-filed
+
+②
+sc-date-period-field
+
+③
+sc-period-month-field
+
+④
+sc-month-period-field
+
+12. Which property sets additional options for downloading Excel from the grid function? (5 points)
+http://techdocs.emro.co.kr/display/SF10/sc-grid+API
+※ See sc-grid API
+
+①
+excelOptions
+
+②
+downloadExcelOptions
+
+③
+`exportOptions`
+④
+exportExcelOptions
+
+
+16. How do I allow only PDF attachments in my attachments? (5 points)
+https://smartx-10.emro.co.kr/devops.do
+※ Other > See attached file
+
+Subjective answer
+
+
+17. The module below is not currently being printed. The purpose of the em-test module is to call the load function of the es-test module at initialization time. Please find the cause of the non-printing, fix it, and submit it. (20 points)
+- Assuming that there are no errors in the es-test module, the load function is defined in the es-test module.
+
+- 1 hint script error, 2 html related errors
+
+
+
+{code}
+
+<sc-link rel="import" href="es-test.html" />
+
+<dom-module id="em-test">
+
+ <style>
+
+  :host {
+
+   @apply(--vbox-layout);
+
+  }
+
+ </style>
+
+
+
+ <template>
+
+  <es-test style="esTest" ></es-test>
+
+ </template>
+
+
+
+ <script>
+
+  
+
+  Polymer({
+
+   is: 'em-test',
+
+   properties : {
+
+    resultList: {
+
+     type:Array
+
+    }
+
+   },
+
+   initialized : function(){
+
+    me.$.esTest.load("test");
+
+   },
+
+   myTestFunction : function(){
+
+    
+
+   }
+
+  });
+
+ </script>
+
+</dom-module>
+
+{code}
+
+Descriptive answer
+
+
+Regarding the database, we have a basic propagation/isolation setting so that all services have the same transaction. What is the default setting
+`REQUIRED`
+REQUIRES_NEW
+MANDATORY
+NEVER
