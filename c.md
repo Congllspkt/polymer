@@ -7,7 +7,7 @@ validate
 validategroup 
 
 ③
-`validate-group`
+```validate-group```
 
 ④
 validation-group
@@ -26,7 +26,7 @@ stateChanged
 itemChanged
 
 ④
-`itemStateChanged`
+```itemStateChanged```
 
 
 
@@ -60,7 +60,7 @@ ConsoleExceptionHandler
 DefaultExceptionHandler
 
 ④
-`SpringWebExceptionHandler`
+```SpringWebExceptionHandler```
 
 5. Which of the following is a correct description of the 'stateful' option in scheduler management? (5 points)
 http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80380815
@@ -74,7 +74,7 @@ This is an option to check whether the scheduler was executed normally.
 Option to have multiple instances when running the scheduler.
 
 ③
-This is an option to prevent the same job from being executed before the previous task is finished when the scheduler is executed.
+```This is an option to prevent the same job from being executed before the previous task is finished when the scheduler is executed.```
 
 ④
 This is an option to run the same job at the same time even if the previously executed task has not finished when the scheduler is executed.
@@ -125,6 +125,8 @@ https://smartx-10.emro.co.kr/devops.do
 
 ④
 [formula('isView')]
+
+
 9. 10.0 What file checks the contents of the XSS filter applied in the solution? (5 points)
 http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381575 
 
@@ -134,7 +136,7 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381575
 web.xml
 
 ②
-security-context.xml
+```security-context.xml```
 
 ③
 web.xml/security-context.xml
@@ -193,13 +195,15 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381583
 Referer Verification
 
 ②
-CSRF Token Verification
+```CSRF Token Verification```
 
 ③
 XSS Verification
 
 ④
 Use CAPTCHA
+
+
 14. How do I set up the grid copy protection function? (5 points)
 http://techdocs.emro.co.kr/display/SF10/sc-grid+API
 ※ See sc-grid API
@@ -208,19 +212,22 @@ http://techdocs.emro.co.kr/display/SF10/sc-grid+API
 copyDisabled
 
 ②
-copyEnabled
+```copyEnabled```
 
 ③
 disabledCopy
 
 ④
 enabledCopy
+
+
 15. Here are the log settings: logging.destination=C://smartsuite logging.level=INFO logging.lightLogging=false logging.includeControllerParameter=true logging.includeServiceParameter=false logging.forceLoggingList=\ Which of the following options would reduce the information in the log due to performance or capacity issues? (5 points)
 http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80382319
 
 ※ Refer to Execution Log
 
-Subjective answer
+Subjective answer: `logging.lightLogging`
+
 16. How to call only the [readOnly] formula again in Event after saving? (5 points)
 https://smartx-10.emro.co.kr/devops.do
 ※ See Other > Dynamic Screen Control
@@ -250,14 +257,12 @@ myFunction: function(data1, data2){
 
 {code}
 
-The result when calling myFunction(-1, 1); is: 
+The result when calling myFunction(-1, 1); is: 0
 
-The result when calling myFunction(0, 1); is: 
+The result when calling myFunction(0, 1); is: null
 
-The result when calling myFunction(null, 2); is: 
+The result when calling myFunction(null, 2); is: null
 
-The result when calling myFunction("1", 2); is: 
+The result when calling myFunction("1", 2); is: 12
 
-The result when calling myFunction("", 2); is: 
-
-Descriptive answer
+The result when calling myFunction("", 2); is: null
