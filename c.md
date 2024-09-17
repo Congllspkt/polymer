@@ -94,6 +94,8 @@ LaterConnectionDataSourcePorxy
 
 ④
 LazyConnectionDataSourcePorxy
+
+
 7. The following are common services that are absolutely necessary after login authentication and before the initial Main (MDI) screen. What is wrong with the service request URL? (5 points)
 Check the information called when logging in (using developer tools)
 
@@ -121,10 +123,13 @@ https://smartx-10.emro.co.kr/devops.do
 {formula('isView')}
 
 ③
-[[formula('isView')]]
+`[[formula('isView')]]`
 
 ④
 [formula('isView')]
+
+
+![alt text](image-4.png)
 
 
 9. 10.0 What file checks the contents of the XSS filter applied in the solution? (5 points)
@@ -155,10 +160,14 @@ string format
 string_format
 
 ③
-string-date
+`string-date`
 
 ④
 string_date
+
+![alt text](image-5.png)
+
+
 11. Regarding the database, we have a default propagation/isolation setting so that all services have the same transaction. What is the default setting? (5 points)
 ①
 REQUIRED
@@ -171,9 +180,13 @@ MANDATORY
 
 ④
 NEVER
+
+
 12. What event is called when an element is selected when calling tab-navigation? (5 points)
 https://smartx-10.emro.co.kr/devops.do
 ※ Refer to module configuration
+
+![alt text](image-1.png)
 
 ①
 item-active
@@ -182,7 +195,7 @@ item-active
 active-item
 
 ③
-item-select
+`?????item-select`
 
 ④
 select-item
@@ -234,7 +247,7 @@ Subjective answer: `logging.lightLogging`
 https://smartx-10.emro.co.kr/devops.do
 ※ See Other > Dynamic Screen Control
 
-Subjective answer
+Subjective answer 
 
 17. When the myFunction function is defined as shown below in JavaScript, describe the result value that appears when calling the myFunction function (20 points)
 {code}
@@ -315,10 +328,12 @@ sc-period-date-filed
 sc-date-period-field
 
 ③
-sc-period-month-field
+`sc-period-month-field`
 
 ④
 sc-month-period-field
+
+![alt text](image-2.png)
 
 12. Which property sets additional options for downloading Excel from the grid function? (5 points)
 http://techdocs.emro.co.kr/display/SF10/sc-grid+API
@@ -340,7 +355,9 @@ exportExcelOptions
 https://smartx-10.emro.co.kr/devops.do
 ※ Other > See attached file
 
-Subjective answer
+Subjective answer: = extension="pdf"
+
+![alt text](image-3.png)
 
 
 17. The module below is not currently being printed. The purpose of the em-test module is to call the load function of the es-test module at initialization time. Please find the cause of the non-printing, fix it, and submit it. (20 points)
