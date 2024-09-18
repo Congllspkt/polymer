@@ -302,7 +302,7 @@ myFnction: function(data1, data2){
 var result = null;
 
 
- ifdata1 && data2){
+ if (data1 && data2){
  
   
  
@@ -533,8 +533,6 @@ myTestFunction : function(){
   
 
 </script>
-
- 
  </dom-module>
 
 {code}
@@ -604,11 +602,18 @@ Please complete the query. (20 points)
 ![alt text](961f032ba4f6f6ecc74581d5ffca8193_1623976966_5925.png)
 
 SELECT
+
+
    orderHeader.orderNumber orderItem.orderNumber
+
    orderHeader.orderTitle
+
    orderItem.itemCode
+
    orderItem.itemAmount
+
    purchaseRequestDetail.purchaseRequestAmount FROM orderHeader
+
    …
 
 
