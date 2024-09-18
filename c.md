@@ -581,14 +581,13 @@ rowStyleFunction
 
 editable
 
-
 15. Which option is set when applying duplication among the Quartz scheduler options? (5 points)
 
 http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80380813
 
 ※ Refer to the developer guide
 
-Subjective answer
+Subjective answer: `org.quartz.jobStore.clusterCheckinInterval`
 
 16. I want to change the background color of the column based on the top value in the grid. Please write which function should I use. (5 points)
 
