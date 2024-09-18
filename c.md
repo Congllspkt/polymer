@@ -3,17 +3,13 @@
 1. How do you group and process Vallidator processing? (5 points)
 
 
-
 validate 
-
 
 
 validategroup 
 
 
-
 ```validate-group```
-
 
 
 validation-group
@@ -25,17 +21,13 @@ http://techdocs.emro.co.kr/display/SF10/sc-grid+API
 ※ See sc-grid API
 
 
-
 changeItemState
-
 
 
 stateChanged
 
 
-
 itemChanged
-
 
 
 ```itemStateChanged```
@@ -44,26 +36,19 @@ itemChanged
 
 
 
-
-
 3. This is a technology that packages front-end resources used by clients into jar fils. Representative examples include sc-component.jar, sc-upload.jar, and sc-upload.jar. What is this technology? (5 points)
-
 
 
 FrontEndJars
 
 
-
 RsourceJars
-
 
 
 WebJars
 
 
-
 JsJars
-
 
 
 4. What class is responsible for handling all errors that occur in the application? (5 points)
@@ -73,17 +58,13 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381595
 ※ Refer to the error page designation
 
 
-
 AllExceptionHandler
-
 
 
 ConsoleExceptionHandler
 
 
-
 DefaultExceptionHandler
-
 
 
 ```SpringWebExceptionHandler```
@@ -95,20 +76,14 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80380815
 ※ 1. See Batch Scheduler Registration
 
 
-
 This is an option to check whether the scheduler was executed normally.
-
 
 
 Option to have multiple instances when running the scheduler.
 
 
 
-
-
 ```This is n option to prevent the same job from being executed before the previous task is finished when the scheduler is executed.```
-
-
 
 
 
@@ -118,27 +93,19 @@ This is n option to run the same job at the same time even if the previously exe
 
 
 
-
-
 6. When using multiple transactions, all defined data source connections are secured, resultingin an excessive connection pool. What class should be used to create a connection at the time the data source is used? (5 points)
-
 
 
 AfterConnectionDataSourcePorxy
 
 
-
 AsyncConnectionDataSourcePorxy
-
 
 
 LaterConnectionDataSourcePorxy
 
 
-
 LazyConnectionDataSourcePorxy
-
-
 
 
 
@@ -149,17 +116,13 @@ Check the information called when logging in (using developer tools)
 Multilingual information (getByLastUpdated.do)
 
 
-
 Session information (getSessionUser.do)
-
 
 
 User permissions information (getUserRoles.do)
 
 
-
 Multilingual information (getAvailableLocalizedLocales.do)
-
 
 
 Menu information (findListMenu.do)
@@ -171,25 +134,19 @@ https://smartx-10.emro.co.kr/devops.do
 ※ See Other > Dynamic Screen Control
 
 
-
 {{formula('isView')}}
-
 
 
 {formula('isView')}
 
 
-
 `[[formula('isView')]]`
-
 
 
 [formula('isView')]
 
 
-
 ![alt text](image-4.png)
-
 
 
 9. 10.0 What file checks the contents of the XSS filter applied in the solution? (5 points)
@@ -199,17 +156,13 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381575
 ※ Refer to Cross-site Scripting (XSS)
 
 
-
 web.xml
-
 
 
 ```security-context.xml```
 
 
-
 web.xml/security-context.xml
-
 
 
 web.xml / security-context.xml / trasaction-context.xml
@@ -221,17 +174,13 @@ https://smartx-10.emro.co.kr/devops.do
 ※ Field > See main fields
 
 
-
 string format
-
 
 
 string_format
 
 
-
 `string-date`
-
 
 
 string_date
@@ -240,26 +189,19 @@ string_date
 
 
 
-
-
 11. Regarding the database, wehave a default propagation/isolation setting so that all services have the same transaction. What is the default setting? (5 points)
-
 
 
 `REQUIRED`
 
 
-
 REQUIRES_NEW
-
 
 
 MANDATORY
 
 
-
 NEVER
-
 
 
 12. What event is called when an element is selected when calling tab-navigation? (5 points)
@@ -271,22 +213,16 @@ https://smartx-10.emro.co.kr/devops.do
 ![alt text](image-1.png)
 
 
-
 item-active
-
 
 
 active-item
 
 
-
 `?????item-select`
 
 
-
 select-item
-
-
 
 
 
@@ -297,21 +233,16 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80381583
 ※ See CSRF defense
 
 
-
 Referer Verification
-
 
 
 ```CSRF Token Verification```
 
 
-
 XSS Verification
 
 
-
 Use CAPTCHA
-
 
 
 14. How do I set up the grid copy protection function? (5 points)
@@ -321,31 +252,23 @@ http://techdocs.emro.co.kr/display/SF10/sc-grid+API
 ※ See sc-grid API
 
 
-
 copyDisabled
-
 
 
 ```copyEnabled```
 
 
-
 disabledCopy
-
 
 
 enabledCopy
 
 
 
-
-
 15. Here are the log settings: 
 
 
-
 logging.destination=C://smartsuite logging.level=INFO logging.lightLogging=false logging.includeControllerParameter=true logging.includeServiceParameter=false logging.forceLoggigList=\ 
-
 
 
 Which of the following options would reduce the information in the log due to performance or capacity issues? (5 points)
@@ -365,48 +288,39 @@ https://smartx-10.emro.co.kr/devops.do
 Subjective answer 
 
 
-
 17. When the myFunction functin is defined as shown below in JavaScript, describe the result value that appears when calling the myFunction function (20 points)
 
 {code}
 
 
-
 myFnction: function(data1, data2){
-    
-        
-    
-    
+ 
+  
+ 
+ 
 
 var result = null;
 
 
-
  ifdata1 && data2){
-    
-        
-    
-    
+ 
+  
+ 
+ 
 
 result = data1 + data2;
 
-  
-  
   
 
 }
 
  
- 
- 
 
- 
- 
+
  
 
 result;
 
- 
  
  }
 
@@ -429,25 +343,18 @@ http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80382828
 ※ Refer to Development Environment Settings (Database)
 
 
-
 `ChainedTransactionManager`
-
 
 
 DataSourceTransactionManager
 
 
 
-
-
 DefaultTransactionManagerLookup
 
  
- 
- 
 
 JtaTransactionManager
-
 
 
 7. How to set an extension that cannot be attached in the attachment component? (5 points)
@@ -457,17 +364,13 @@ https://smartx-10.emro.co.kr/devops.do
 ※ Other > See attached file
 
 
-
 limit-extension
-
 
 
 restrict-extention
 
 
-
 ban extension
-
 
 
 prohibit-extension
@@ -479,17 +382,13 @@ https://smartx-10.emro.co.kr/devops.do
 ※ Field > See main fields
 
 
-
 sc-period-date-filed
-
 
 
 sc-date-period-field
 
 
-
 `sc-period-month-field`
-
 
 
 sc-month-period-field
@@ -503,21 +402,16 @@ http://techdocs.emro.co.kr/display/SF10/sc-grid+API
 ※ See sc-grid API
 
 
-
 excelOptions
-
 
 
 downloadExcelOptions
 
 
-
 `exportOptions`
 
 
-
 exportExcelOptions
-
 
 
 16. How do I allow only PDF attachments in my attachments? (5 points)
@@ -532,14 +426,11 @@ Subjective answer: = extension="pdf"
 
 
 
-
-
 17. The module below is not currently being printed. The purpose of the em-test module is to call the load unction of the es-test module at initialization time. Please find the cause of the non-printing, fix it, and submit it. (20 points)
 
 - Assuming that there are no errors in the es-test module, the load function is defined in the es-test module.
 
 - 1 hint script error, 2 html related errors
-
 
 
 {code}
@@ -549,35 +440,24 @@ Subjective answer: = extension="pdf"
 <dom-module id="em-test">
 
 
-
 <style>
 
- 
- 
  
 
 :host {
 
   
-  
-  
 
 @apply(--vbox-layout);
 
-   
-   
-   
+
 
 }
 
   
-  
-  
 
 </style>
 
- 
- 
  
 
 
@@ -585,19 +465,13 @@ Subjective answer: = extension="pdf"
 <template>
 
  
- 
- 
 
 <es-test style="esTest" ></es-test>
 
   
-  
-  
 
 </template>
 
- 
- 
  
 
 
@@ -605,106 +479,67 @@ Subjective answer: = extension="pdf"
 <script>
 
  
- 
- 
 
-  
-  
+
   
 
 Polymer({
 
   
-  
-  
 
 is: 'em-test',
 
-   
-   
-   
+
 
 properties : {
 
-   
-   
-   
+
 
 resultList: {
 
-    
-    
-    
+ 
+ 
+ 
 
-    type:Array
-    
-         
-     
-     
+ type:Array
+ 
+
+  
+  
 
 }
 
-    
-    
-    
+ 
+ 
+ 
 
 },
 
-   
-   
-   
+
 
 initialized : function(){
-
-   
-   
-   
-
 me.$.esTest.load("test");
-
-    
-    
-    
 
 },
 
-   
-   
-   
+
 
 myTestFunction : function(){
 
-   
-   
-   
-
-    
-    
-    
-
 }
-
-   
-   
-   
 
 });
 
   
-  
-  
 
 </script>
 
- 
  
  </dom-module>
 
 {code}
 
 Descriptive answer
-
-
 
 
 
@@ -718,5 +553,66 @@ MANDATORY
 
 NEVER
 
+4. How to apply after modifying multiple rows of grid data? (5 points)
+
+http://techdocs.emro.co.kr/display/SF10/sc-grid+DataProvider+API
+
+※ See sc-grid DataProvider
+
+setCellValue
+
+setCellBatch
+
+setItemAt
+
+setItemAtBatch
+
+8. What is the top priority for style when setting up a column? (5 points)
+
+http://techdocs.emro.co.kr/display/SF10/sc-grid+API
+
+※ See sc-grid API
+
+`required`
+
+itemStyleFuction
+
+rowStyleFunction
+
+editable
+
+
+15. Which option is set when applying duplication among the Quartz scheduler options? (5 points)
+
+http://techdocs.emro.co.kr/pages/viewpage.action?pageId=80380813
+
+※ Refer to the developer guide
+
+Subjective answer
+
+16. I want to change the background color of the column based on the top value in the grid. Please write which function should I use. (5 points)
+
+http://techdocs.emro.co.kr/display/SF10/sc-grid+API
+
+※ See sc-grid API
+
+Subjective answer
+
+17. I want to output a query on the order details from the ERD structure below.
+Please complete the query. (20 points)
+ 
+
+![alt text](961f032ba4f6f6ecc74581d5ffca8193_1623976966_5925.png)
+
+SELECT
+   orderHeader.orderNumber orderItem.orderNumber
+   orderHeader.orderTitle
+   orderItem.itemCode
+   orderItem.itemAmount
+   purchaseRequestDetail.purchaseRequestAmount FROM orderHeader
+   …
+
+
+Descriptive answer
 
 
