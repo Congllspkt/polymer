@@ -1,0 +1,50 @@
+{
+  "name": "sc-upload",
+  "version": "5.0.2-SNAPSHOT",
+  "elements": [
+    {
+      "name": "sc-upload",
+      "desc": "This element allows you to attach, upload, and download files."
+    },
+    {
+      "name": "sc-upload-listview",
+      "desc": "This is a view element that displays sc-upload attachments in a list format."
+    },
+    {
+      "name": "sc-upload-listview-dummy",
+      "desc": "This is a dummy field element used in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-listview-filename",
+      "desc": "This is a file name field element used in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-listview-filesize",
+      "desc": "This is a file size field element used in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-listview-selection",
+      "desc": "This is a file selection field element used in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-listview-state",
+      "desc": "This is a file status field element used in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-listview-template",
+      "desc": "This is a template element that can implement custom fields in the sc-upload-listview element."
+    },
+    {
+      "name": "sc-upload-thumbnail-box",
+      "desc": "This is a thumbnail box element used in the sc-upload-thumbnailview element."
+    },
+    {
+      "name": "sc-upload-thumbnailview",
+      "desc": "This is a view element that shows sc-upload attachments in thumbnail form."
+    },
+    {
+      "name": "sc-upload-util",
+      "desc": "This is a utility class used in sc-upload."
+    }
+  ]
+}

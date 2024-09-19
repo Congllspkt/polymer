@@ -1,0 +1,66 @@
+{
+  "name": "sc-upload",
+  "version" : "5.1.0",
+  "authors": [
+    "sunghuni@emro.co.kr <sunghuni@emro.co.kr>"
+  ],
+  "description": "파일을 첨부하고 업로드, 다운로드 할 수 있는 엘리먼트 입니다.",
+  "main": [
+  	"sc-upload.html"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.6.0",
+  	"page": "visionmedia/page.js#~1.6.4",
+    "app-elements" : "PolymerElements/app-elements#^0.9.0",
+    "iron-elements" : "PolymerElements/iron-elements#^1.0.7",
+    "iron-list" : "PolymerElements/iron-list#1.2.6",
+	"iron-behaviors" : "PolymerElements/iron-behaviors#1.0.13",
+	"iron-checked-element-behavior" : "PolymerElements/iron-checked-element-behavior#1.0.4",
+	"iron-input" : "PolymerElements/iron-input#1.0.10",
+	"iron-resizable-behavior" : "PolymerElements/iron-resizable-behavior#1.0.3",
+	"iron-overlay-behavior" : "PolymerElements/iron-overlay-behavior#1.4.1",
+	"iron-dropdown" : "PolymerElements/iron-dropdown#1.2.0",
+	"iron-form-element-behavior" : "PolymerElements/iron-form-element-behavior#1.0.6",
+	"iron-selector" : "PolymerElements/iron-selector#1.2.4",
+	"iron-fit-behavior" : "PolymerElements/iron-fit-behavior#1.0.5",
+	"iron-pages" : "PolymerElements/iron-pages#1.0.7",
+	"iron-validator-behavior" : "PolymerElements/iron-validator-behavior#1.0.1",
+    "paper-elements" : "PolymerElements/paper-elements#^1.0.7",
+    "moment-element": "bendavis78/moment-element#^1.1.0",
+    "numeral": "adamwdraper/Numeral-js#1.5.3",
+    "interact": "taye/interact.js#^1.2.6",
+    "phoneformat": "albeebe/phoneformat.js#^1.0.3",
+    "jquery": "^2.2.0",
+    "crypto-js" : "^3.1.2",
+    "bcryptjs" : "^2.3.0",
+    "js-scrypt" : "tonyg/js-scrypt",
+    "fetch" : "github/fetch"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+    "iron-validator-behavior": "PolymerElements/iron-validator-behavior#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "resolutions": {
+    "iron-fit-behavior": "1.0.5",
+    "iron-overlay-behavior" : "1.4.1"
+  }
+}

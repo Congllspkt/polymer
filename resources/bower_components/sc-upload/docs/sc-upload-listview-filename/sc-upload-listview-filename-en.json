@@ -1,0 +1,533 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-listview-filename"
+    },
+    {
+      "is": "Polymer.SCUploadListViewTemplateBehavior"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-listview-filename": {
+      "type": "element",
+      "desc": "\nThe `<sc-upload-listview-filename>` element is a field that shows the file name of the List View of the `<sc-upload>` element.\n",
+      "events": [],
+      "properties": [
+        {
+          "name": "dataField",
+          "type": "String",
+          "desc": "\nThis is the file name binding field name of List View.\n",
+          "published": true,
+          "default": "name"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "displayField",
+          "type": "String",
+          "desc": "\nSpecifies the property of the value to be displayed on the screen among the items array.\n",
+          "published": true,
+          "default": "text"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis property is whether the List View field can be modified.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "flexWidth",
+          "type": "Object",
+          "desc": "\nWhether to use the variable width of the field. If the value is `true`, the width is automatically calculated according to the width of `<sc-upload>`.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "formatType",
+          "type": "String",
+          "desc": "\nThis is a formatter-related property.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "generateHeader",
+          "type": "Function",
+          "desc": "\nCreates and returns a header element for the field.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "header"
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "generateTemplate",
+          "type": "Function",
+          "desc": "\nCreates a `template` for the field and returns an element with CSS style and binding syntax applied.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "template"
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "headerEventDisabled",
+          "type": "Boolean",
+          "desc": "\nDisable header functions (sorting, position movement, size change).\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "headerText",
+          "type": "String",
+          "desc": "\nThis is the file name header name of List View.\n",
+          "published": true,
+          "default": "FileName"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "isFlexWidth",
+          "type": "Function",
+          "desc": "\nReturns whether the field uses variable width.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "items",
+          "type": "Array",
+          "desc": "\nArray of items to be displayed in dropdown.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "maskRe",
+          "type": "String",
+          "desc": "\nThis is a string for input control using regular expressions.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "maxLength",
+          "type": "Number",
+          "desc": "\nThis is the maximum number of strings entered by the user that can be included in the text field.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "minLength",
+          "type": "Number",
+          "desc": "\nThis is the minimum number of strings that the user must enter into the text field.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "minWidth",
+          "type": "Number",
+          "desc": "\nThis is the minimum width of the field. When the `resizable` feature is enabled, the size cannot be changed to be smaller than minWidth.\n",
+          "published": true,
+          "default": 100
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "readonly",
+          "type": "Object",
+          "desc": "\nThis property is for custom field readonly mode.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nWhether to change the order of fields. If the value is `true`, the function to change the order of fields is activated.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "required",
+          "type": "Object",
+          "desc": "\nThis property indicates whether a custom field is required.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nWhether to change the size of the field. If the value is `true`, the field size change function is activated.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "sortable",
+          "type": "Boolean",
+          "desc": "\nWhether to use the field's sorting function. If the value is `false', the field's sorting function is disabled.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "styleName",
+          "type": "String",
+          "desc": "\nThis is the style name of the file name field.\n",
+          "published": true,
+          "default": "fileitem-filename"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "templateId",
+          "type": "String",
+          "desc": "\nThis is the unique ID of the field.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": "UNKNOWN"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "tooltip",
+          "type": "Object",
+          "desc": "\nTooltip?\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "type",
+          "type": "String",
+          "desc": "\nThis is a List View field type property.\n",
+          "published": true,
+          "default": "text"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "valueField",
+          "type": "String",
+          "desc": "\nSpecifies the value property of the items array.\n",
+          "published": true,
+          "default": "value"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "visible",
+          "type": "Object",
+          "desc": "\nMarked or not\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "width",
+          "type": "Number",
+          "desc": "\nThis is the width of the field.\n",
+          "published": true,
+          "default": 100
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nThis is the name to use as a prefix when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "_bindDataField",
+          "type": "Function",
+          "desc": "\nCreates and returns a binding grammar based on the dataField name of the field.\n",
+          "params": [
+            {
+              "name": "dataField",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewTemplateBehavior",
+          "name": "hostAttributes",
+          "type": "Object",
+          "desc": "\nproperties of host\n",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "behaviors": [
+        "Polymer.SCUploadListViewTemplateBehavior"
+      ],
+      "observers": [],
+      "is": "sc-upload-listview-filename",
+      "contentHref": "elements/sc-upload-listview-filename/sc-upload-listview-filename.html",
+      "demos": []
+    },
+    "Polymer.SCUploadListViewTemplateBehavior": {
+      "type": "behavior",
+      "desc": "\nSCUploadListViewTemplateBehavior is a collection of custom field behaviors used in the List View of the `<sc-upload>` element. It creates template elements for header and content settings for header name, binding field, resize, movement, alignment, and style.\n",
+      "events": [],
+      "demos": [],
+      "symbol": "Polymer.SCUploadListViewTemplateBehaviorImpl",
+      "is": "Polymer.SCUploadListViewTemplateBehavior",
+      "properties": [
+        {
+          "name": "dataField",
+          "type": "String",
+          "desc": "\nThis is the field name bound to the List View field.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "displayField",
+          "type": "String",
+          "desc": "\nSpecifies the property of the value to be displayed on the screen among the items array.\n",
+          "published": true,
+          "default": "text"
+        },
+        {
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis property is whether the List View field can be modified.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "flexWidth",
+          "type": "Object",
+          "desc": "\nWhether to use the variable width of the field. If the value is `true`, the width is automatically calculated according to the width of `<sc-upload>`.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "desc": "\nThis is a formatter-related property.\n",
+          "published": true
+        },
+        {
+          "name": "generateHeader",
+          "type": "Function",
+          "desc": "\nCreates and returns a header element for the field.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "header"
+          }
+        },
+        {
+          "name": "generateTemplate",
+          "type": "Function",
+          "desc": "\nCreates a `template` for the field and returns an element with CSS style and binding syntax applied.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "template"
+          }
+        },
+        {
+          "name": "headerEventDisabled",
+          "type": "Boolean",
+          "desc": "\nDisable header functions (sorting, position movement, size change).\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "headerText",
+          "type": "String",
+          "desc": "\nThis is the header name of List View.\n",
+          "published": true
+        },
+        {
+          "name": "isFlexWidth",
+          "type": "Function",
+          "desc": "\nReturns whether the field uses variable width.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "items",
+          "type": "Array",
+          "desc": "\nArray of items to be displayed in dropdown.\n",
+          "published": true
+        },
+        {
+          "name": "maskRe",
+          "type": "String",
+          "desc": "\nThis is a string for input control using regular expressions.\n",
+          "published": true
+        },
+        {
+          "name": "maxLength",
+          "type": "Number",
+          "desc": "\nThis is the maximum number of strings entered by the user that can be included in the text field.\n",
+          "published": true
+        },
+        {
+          "name": "minLength",
+          "type": "Number",
+          "desc": "\nThis is the minimum number of strings that the user must enter into the text field.\n",
+          "published": true
+        },
+        {
+          "name": "minWidth",
+          "type": "Number",
+          "desc": "\nThis is the minimum width of the field. When the `resizable` feature is enabled, the size cannot be changed to be smaller than minWidth.\n",
+          "published": true,
+          "default": 100
+        },
+        {
+          "name": "readonly",
+          "type": "Object",
+          "desc": "\nThis property is for custom field readonly mode.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nWhether to change the order of fields. If the value is `true`, the function to change the order of fields is activated.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "required",
+          "type": "Object",
+          "desc": "\nThis property indicates whether a custom field is required.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nWhether to change the size of the field. If the value is `true`, the field size change function is activated.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "sortable",
+          "type": "Boolean",
+          "desc": "\nWhether to use the field's sorting function. If the value is `false', the field's sorting function is disabled.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "styleName",
+          "type": "String",
+          "desc": "\nThis is the CSS style name of the field.\n",
+          "published": true
+        },
+        {
+          "name": "templateId",
+          "type": "String",
+          "desc": "\nThis is the unique ID of the field.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "tooltip",
+          "type": "Object",
+          "desc": "\nTooltip?\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "desc": "\nThis is a List View field type property.\n",
+          "published": true,
+          "default": "text"
+        },
+        {
+          "name": "valueField",
+          "type": "String",
+          "desc": "\nSpecifies the value property of the items array.\n",
+          "published": true,
+          "default": "value"
+        },
+        {
+          "name": "visible",
+          "type": "Object",
+          "desc": "\nMarked or not\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "width",
+          "type": "Number",
+          "desc": "\nThis is the width of the field.\n",
+          "published": true,
+          "default": 100
+        },
+        {
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nThis is the name to use as a prefix when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "_bindDataField",
+          "type": "Function",
+          "desc": "\nCreates and returns a binding grammar based on the dataField name of the field.\n",
+          "params": [
+            {
+              "name": "dataField",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "hostAttributes",
+          "type": "Object",
+          "desc": "\nproperties of host\n",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "observers": [],
+      "contentHref": "elements/sc-upload-listview-template/sc-upload-listview-template-behavior.html"
+    }
+  }
+}

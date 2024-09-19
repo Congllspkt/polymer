@@ -1,0 +1,219 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-progress-popup"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-progress-popup": {
+      "type": "element",
+      "desc": "\nThe `<sc-upload-progress-popup>` element is a popup that expresses the progress of uploading an attached file and provides the function of showing the progress of all attached files and the progress of each individual file.\n",
+      "events": [],
+      "properties": [
+        {
+          "name": "addAdditionalFileInfo",
+          "type": "Function",
+          "desc": "\nIt receives the list of files added during upload as a parameter and expresses the progress status.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "progressChanged",
+          "type": "Function",
+          "desc": "\nUpdate the progress status of the file with the received file ID\n",
+          "params": [
+            {
+              "name": "id"
+            },
+            {
+              "name": "percent"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "setParam",
+          "type": "Function",
+          "desc": "\nThe initialization process is performed by receiving the upload target attachment file as a parameter.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "totalFileCount",
+          "type": "Number",
+          "desc": "\nThis is the total number of uploaded files.\n",
+          "published": true,
+          "default": 0
+        },
+        {
+          "name": "totalFileSize",
+          "type": "Number",
+          "desc": "\nThis is the total upload file size.\n",
+          "published": true,
+          "default": 0
+        },
+        {
+          "name": "totalProgressChanged",
+          "type": "Function",
+          "desc": "\nChanges the overall progress bar state.\n",
+          "params": [
+            {
+              "name": "percent"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "updateUploadingInfo",
+          "type": "Function",
+          "desc": "\nUpdate the attached file upload status.\n",
+          "params": [
+            {
+              "name": "oldFile",
+              "type": "Object",
+              "desc": null
+            },
+            {
+              "name": "newFile",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "uploadedFileCount",
+          "type": "Number",
+          "desc": "\nThis is the number of files that have been uploaded.\n",
+          "published": true,
+          "default": 0
+        },
+        {
+          "name": "uploadedFileSize",
+          "type": "Number",
+          "desc": "\nThis is the uploaded file size.\n",
+          "published": true,
+          "default": 0
+        },
+        {
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "desc": "\nIt is a destructor.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_files",
+          "type": "Array",
+          "desc": "\nThis is a list of attachment files managed by the `<sc-upload-progress-popup>` element.\n",
+          "published": true,
+          "default": "[]",
+          "private": true
+        },
+        {
+          "name": "_init",
+          "type": "Function",
+          "desc": "\nInitialize the upload status value.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_interactPropertiesChanged",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListboxRender",
+          "type": "Function",
+          "desc": "\nThe file list rendering completion event handler in listview determines the size of the file list.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_progressElement",
+          "type": "Element",
+          "desc": "\nThis is an entire file upload program element.\n",
+          "private": true
+        },
+        {
+          "name": "_setFileInfo",
+          "type": "Function",
+          "desc": "\nReceives file information and calculates the total file size.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_size2String",
+          "type": "Function",
+          "desc": "\nConverts the file size to text using file size units and returns it.\n",
+          "params": [
+            {
+              "name": "size",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_uploadedState",
+          "type": "Number",
+          "desc": "\nUpload is in progress.\n",
+          "published": true,
+          "default": 3,
+          "private": true
+        }
+      ],
+      "behaviors": [],
+      "observers": [],
+      "is": "sc-upload-progress-popup",
+      "contentHref": "sc-upload-progress-popup.html",
+      "demos": []
+    }
+  }
+}

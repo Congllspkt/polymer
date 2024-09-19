@@ -1,0 +1,693 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-thumbnailview"
+    },
+    {
+      "is": "Polymer.SCInteractDraggableBehavior"
+    },
+    {
+      "is": "Polymer.SCUploadViewBehavior"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-thumbnailview": {
+      "type": "element",
+      "desc": "\n",
+      "events": [],
+      "properties": [
+        {
+          "name": "doContentElementResize",
+          "type": "Function",
+          "desc": "\nMethods that do not need to be used in view types\n",
+          "params": [],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property determines whether or not to download when an attached file item is double-clicked.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion function of attached files. If the value is `true`, the dropText phrase is displayed, and `false` the dropText phrase is not displayed.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "fileMap",
+          "type": "",
+          "desc": "\nReturns information about files in key and value format.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "files",
+          "type": "Array",
+          "desc": "\nThis is a list of attached files managed by the `<sc-upload-listview>` element.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "getCustomizedStateImage",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "getStateImage",
+          "type": "Function",
+          "desc": "\nReturns a state class matching the state value\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "interactDraggableElementRect",
+          "type": "Object",
+          "desc": "\nIf it is outside the drag area, it is automatically moved inside the drag area according to the set top, left, bottom, and right values. \nFor the left and right properties, 0 means the leftmost side of the element, and 1 means the rightmost side of the element. \nIn the top and bottom properties, 0 means the top of the element and 1 means the bottom. \nPlease refer to interactjs' draggable restrict.elementRect.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "isAvailable",
+          "type": "Object",
+          "desc": "\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "processNullValue",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of columns by dragging and dropping. It is activated when the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the column. It is activated if the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "selectedFileCount",
+          "type": "",
+          "desc": "\nReturns the number of selected file lists in listview.\n"
+        },
+        {
+          "name": "selectedFiles",
+          "type": "",
+          "desc": "\nReturns the selected item in thumbnailViewer.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "setAvailable",
+          "type": "Function",
+          "desc": "\nCheck the view in use among the set view types\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "setSelectItem",
+          "type": "Function",
+          "desc": "\nEnter a file and select an item.\n",
+          "params": [
+            {
+              "name": "fileList",
+              "type": "Array",
+              "desc": "List of files to select"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "sort",
+          "type": "Function",
+          "desc": "\nSorts the file list of thumbnailview.\n",
+          "params": [
+            {
+              "name": "field",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t",
+          "published": true,
+          "notify": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t",
+          "published": true,
+          "notify": true,
+          "default": "asc"
+        },
+        {
+          "name": "thumbnailInfo",
+          "type": "Array",
+          "desc": "\nThumbnail information ID - Thumbnail\n",
+          "published": true,
+          "default": "{}"
+        },
+        {
+          "name": "tmpFileList",
+          "type": "Object",
+          "desc": "\nTemporary file list\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nsc-i18n This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_commonDestroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_computedDropInfo",
+          "type": "Function",
+          "desc": "\nReturns whether the dropText phrase of listview is used.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_filesChanged",
+          "type": "Function",
+          "desc": "\nIf the file list in listview changes and a sorted column exists, the file list is sorted.\n",
+          "params": [
+            {
+              "name": "state"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_interactPropertiesChanged",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_interactPropertiesChanged",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onClickThumbnail",
+          "type": "Function",
+          "desc": "\nOccurs when a thumbnail is clicked\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "detail"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDblClick",
+          "type": "Function",
+          "desc": "\nWhen you double-click the content area of ​​the thumbnailview, an `add` event is propagated so that the file dialog is activated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDownload",
+          "type": "Function",
+          "desc": "\nWhen you double-click the file list of thumbnail, a `download` event is propagated.\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_prepare",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_renderThumbnailView",
+          "type": "Function",
+          "desc": "\nRender the thumbnail view.\n",
+          "params": [
+            {
+              "name": "state"
+            },
+            {
+              "name": "thumbnailListEl"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_selectionChanged",
+          "type": "Function",
+          "desc": "\nWhen the selection state of an item changes\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_setSelectItem",
+          "type": "Function",
+          "desc": "\nSetting whether or not the selected item is selected\n",
+          "params": [
+            {
+              "name": "fileList"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_sortPropertyChanged",
+          "type": "Function",
+          "desc": "\nWhen the sorting criteria field changes, the sort function is called.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "attached",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        },
+        {
+          "name": "listeners",
+          "type": "Object",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "behaviors": [
+        "Polymer.SCInteractDraggableBehavior",
+        "Polymer.SCUploadViewBehavior"
+      ],
+      "observers": [],
+      "is": "sc-upload-thumbnailview",
+      "contentHref": "elements/sc-upload-thumbnailview/sc-upload-thumbnailview.html",
+      "demos": []
+    },
+    "Polymer.SCUploadViewBehavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadViewBehaviorImpl",
+      "is": "Polymer.SCUploadViewBehavior",
+      "properties": [
+        {
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property determines whether or not to download when an attached file item is double-clicked.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion function of attached files. If the value is `true`, the dropText phrase is displayed, and `false` the dropText phrase is not displayed.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "fileMap",
+          "type": "",
+          "desc": "\nReturns information about files in key and value format.\n"
+        },
+        {
+          "name": "files",
+          "type": "Array",
+          "desc": "\nThis is a list of attached files managed by the `<sc-upload-listview>` element.\n",
+          "published": true
+        },
+        {
+          "name": "getCustomizedStateImage",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "getStateImage",
+          "type": "Function",
+          "desc": "\nReturns a state class matching the state value\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "interactDraggableElementRect",
+          "type": "Object",
+          "desc": "\nIf it is outside the drag area, it is automatically moved inside the drag area according to the set top, left, bottom, and right values. \nFor the left and right properties, 0 means the leftmost side of the element, and 1 means the rightmost side of the element. \nIn the top and bottom properties, 0 means the top of the element and 1 means the bottom. \nPlease refer to interactjs' draggable restrict.elementRect.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "name": "isAvailable",
+          "type": "Object",
+          "desc": "\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "processNullValue",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of columns by dragging and dropping. It is activated when the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the column. It is activated if the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "name": "selectedFileCount",
+          "type": "",
+          "desc": "\nReturns the number of selected file lists in listview.\n"
+        },
+        {
+          "name": "setAvailable",
+          "type": "Function",
+          "desc": "\nCheck the view in use among the set view types\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "sort",
+          "type": "Function",
+          "desc": "\nSort the file list.\n",
+          "params": [
+            {
+              "name": "field",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "direction",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t",
+          "published": true,
+          "notify": true
+        },
+        {
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t",
+          "published": true,
+          "notify": true,
+          "default": "asc"
+        },
+        {
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nsc-i18n This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_commonDestroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_computedDropInfo",
+          "type": "Function",
+          "desc": "\nReturns whether the dropText phrase of listview is used.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDblClick",
+          "type": "Function",
+          "desc": "\nWhen you double-click the content area of ​​the listview, an `add` event is propagated so that the file dialog is activated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepare",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_sortPropertyChanged",
+          "type": "Function",
+          "desc": "\nWhen the sorting criteria field changes, the sort function is called.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "attached",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        }
+      ],
+      "observers": [
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 1944,
+            "end": 1974,
+            "loc": {
+              "start": {
+                "line": 106,
+                "column": 2
+              },
+              "end": {
+                "line": 106,
+                "column": 32
+              }
+            },
+            "range": [
+              1944,
+              1974
+            ],
+            "value": "_filesChanged(files.splices)",
+            "raw": "'_filesChanged(files.splices)'"
+          },
+          "expression": "_filesChanged(files.splices)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 1978,
+            "end": 2030,
+            "loc": {
+              "start": {
+                "line": 107,
+                "column": 2
+              },
+              "end": {
+                "line": 107,
+                "column": 54
+              }
+            },
+            "range": [
+              1978,
+              2030
+            ],
+            "value": "_sortPropertyChanged(sortDataField, sortDirection)",
+            "raw": "'_sortPropertyChanged(sortDataField, sortDirection)'"
+          },
+          "expression": "_sortPropertyChanged(sortDataField, sortDirection)"
+        }
+      ],
+      "contentHref": "elements/sc-upload-view-behavior/sc-upload-view-behavior.html"
+    }
+  }
+}

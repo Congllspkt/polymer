@@ -1,0 +1,1599 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-listview"
+    },
+    {
+      "is": "Polymer.SCInteractDraggableBehavior"
+    },
+    {
+      "is": "Polymer.SCUploadViewBehavior"
+    },
+    {
+      "is": "Polymer.SCUploadListViewBehavior"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-listview": {
+      "type": "element",
+      "desc": "\nThe `<sc-upload-listview>` element is an element that can express file information in the form of a list of `<sc-upload>` elements, and provides custom fields, location change, and size change functions.\n",
+      "events": [
+        {
+          "desc": "\nWhen a file item is selected, the event is propagated.\n",
+          "name": "item-select",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is file item information.",
+              "name": "event"
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property determines whether or not to download when an attached file item is double-clicked.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion function of attached files. If the value is `true`, the dropText phrase is displayed, and `false` the dropText phrase is not displayed.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "fileMap",
+          "type": "",
+          "desc": "\nReturns information about files in key and value format.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "files",
+          "type": "Array",
+          "desc": "\nThis is a list of attached files managed by the `<sc-upload-listview>` element.\n",
+          "published": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "getCustomizedStateImage",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "getStateImage",
+          "type": "Function",
+          "desc": "\nReturns a state class matching the state value\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "headers",
+          "type": "",
+          "desc": "\nReturns all header elements in listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "interactDraggableElementRect",
+          "type": "Object",
+          "desc": "\nIf it is outside the drag area, it is automatically moved inside the drag area according to the set top, left, bottom, and right values. For the left and right properties, 0 means the leftmost side of the element, and 1 means the rightmost side of the element. In the top and bottom properties, 0 means the top of the element and 1 means the bottom. Please refer to interactjs' draggable restrict.elementRect.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "isAvailable",
+          "type": "Object",
+          "desc": "\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listboxElement",
+          "type": "",
+          "desc": "\nReturns a `<sc-listbox>` element representing the list of files in the listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listboxItemRenderFn",
+          "type": "Function",
+          "published": true,
+          "default": null,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listboxTemplateElement",
+          "type": "",
+          "desc": "\nReturns a `<template>` element representing the list of files in the listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listviewContentElement",
+          "type": "",
+          "desc": "\nReturns the content element of listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listviewDummyElement",
+          "type": "",
+          "desc": "\nReturns the dummy element of listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listviewHeaderElement",
+          "type": "",
+          "desc": "\nReturns the header element of listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listviewSortedHeaderElement",
+          "type": "",
+          "desc": "\nReturns the sorted header elements of the listview's header.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "processNullValue",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of columns by dragging and dropping. It is activated when the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the column. It is activated if the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "selectedFileCount",
+          "type": "",
+          "desc": "\nReturns the number of selected file lists in listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "selectedFiles",
+          "type": "",
+          "desc": "\nReturns the list of selected files in listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "selectionAllElement",
+          "type": "",
+          "desc": "\nReturns the select all checkbox element of the listview header.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "setAvailable",
+          "type": "Function",
+          "desc": "\nCheck the view in use among the set view types\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "setSelectItem",
+          "type": "Function",
+          "desc": "\nEnter a file and select an item.\n",
+          "params": [
+            {
+              "name": "fileList"
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "showFileNameTooltip",
+          "type": "Object",
+          "desc": "\nTooltip?\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "size2String",
+          "type": "Function",
+          "desc": "\nReturns the file size in human-recognizable characters.\n",
+          "params": [
+            {
+              "name": "bytes",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "sort",
+          "type": "Function",
+          "desc": "\nSorts the file list in listview.\n",
+          "params": [
+            {
+              "name": "field",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t",
+          "published": true,
+          "notify": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t",
+          "published": true,
+          "notify": true,
+          "default": "asc"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "uploadTemplates",
+          "type": "",
+          "desc": "\nReturns the column information template of listview.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "uploadUtil",
+          "type": "Object",
+          "desc": "\nReturns SCUploadUtil.\n"
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nsc-i18n This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "__i18nBundleName",
+          "type": "",
+          "desc": "\nsc-i18n property This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_bind",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_commonDestroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_computedAllSelectionDisabled",
+          "type": "Function",
+          "desc": "\nReturns whether the listview's select all checkbox is disabled.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_computedDropInfo",
+          "type": "Function",
+          "desc": "\nReturns whether the dropText phrase of listview is used.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_computedFlexWidth",
+          "type": "Function",
+          "desc": "\nThe length of the listview variable size column is calculated and returned.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_filesChanged",
+          "type": "Function",
+          "desc": "\nIf the file list in listview changes and a sorted column exists, the file list is sorted.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_findTemplateElement",
+          "type": "Function",
+          "desc": "\nReturns the template element of listview column information.\n",
+          "params": [
+            {
+              "name": "templateId",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_generateRowTemplate",
+          "type": "Function",
+          "desc": "\nCreate a listview file list template.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_interactDraggableTransform",
+          "type": "Function",
+          "desc": "\nWhen the header position or size of the listview changes, the file list is re-rendered.\n",
+          "params": [
+            {
+              "name": "target",
+              "type": "Element",
+              "desc": null
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "desc": null
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_interactPropertiesChanged",
+          "type": "Function",
+          "desc": "\nEnables or disables the sc-interact-behaviors function based on the reorderable and resizable property values ​​of the listview.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_isResizer",
+          "type": "Function",
+          "desc": "\nReturns whether there is an indicator element for header size change.\n",
+          "params": [
+            {
+              "name": "element",
+              "type": "Element",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_listboxItemRender",
+          "type": "Function",
+          "desc": "\nRender the file list in listview.\n",
+          "params": [
+            {
+              "name": "template",
+              "type": "Element",
+              "desc": null
+            },
+            {
+              "name": "position"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_listViewOffsetHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the sc-upload-listview element.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_listViewOffsetWidth",
+          "type": "Number",
+          "desc": "\nThis is the width value of the sc-upload-listview element.\n",
+          "private": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onAllSelectionChange",
+          "type": "Function",
+          "desc": "\nChange the selection state of the file list with the listview's all selection state change event handler.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onCustomFieldValueChanged",
+          "type": "Function",
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onDblClick",
+          "type": "Function",
+          "desc": "\nWhen you double-click the content area of ​​the listview, an `add` event is propagated so that the file dialog is activated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onDownload",
+          "type": "Function",
+          "desc": "\nWhen you double-click the file list in listview, a `download` event is propagated.\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onHeaderClick",
+          "type": "Function",
+          "desc": "\nThe listview's header area click event handler sorts the file list depending on whether sorting is used.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListboxItemSelect",
+          "type": "Function",
+          "desc": "\nWhen a file item in the listview is selected, an `item-select` event is propagated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListboxRender",
+          "type": "Function",
+          "desc": "\nThe file list rendering of listview is complete. The size of the header and file list is determined by the event handler.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListViewInteractDrag",
+          "type": "Function",
+          "desc": "\nWhen changing the header position of listview, the position of a copy of the header element is calculated and displayed on the screen.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListViewInteractDragEnd",
+          "type": "Function",
+          "desc": "\nWhen changing the header position of the listview is completed, the listview is re-rendered.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListViewInteractDragStart",
+          "type": "Function",
+          "desc": "\nInitializes the header position change or size change function of listview.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListViewListBoxRender",
+          "type": "Function",
+          "desc": "\nDelays rendering of the file list in listview.\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onListviewScroll",
+          "type": "Function",
+          "desc": "\nSynchronizes the scroll position of the header element with the scroll event handler of the listview's content area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_onSelectionClick",
+          "type": "Function",
+          "desc": "\nWhen you select the file list in listview, the state of the Select All checkbox changes.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_prepare",
+          "type": "Function",
+          "desc": "\nInitialize listview.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_prepareTemplatize",
+          "type": "Function",
+          "desc": "\nInitialize the listview file list template.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_renderHeaders",
+          "type": "Function",
+          "desc": "\nCreates a listview header element.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "_selectionChanged",
+          "type": "Function",
+          "desc": "\nWhen selecting or deselecting a list of files in a listview, a `select` or `deselect` event is propagated.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "_sortPropertyChanged",
+          "type": "Function",
+          "desc": "\nWhen the sorting criteria field changes, the sort function is called.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadViewBehavior",
+          "name": "attached",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "doContentElementResize",
+          "type": "Function",
+          "desc": "\nThe size of the listview's content area is calculated and reflected.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "__fromBehavior": "Polymer.SCUploadListViewBehavior",
+          "name": "listeners",
+          "type": "Object",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "behaviors": [
+        "Polymer.SCInteractDraggableBehavior",
+        "Polymer.SCUploadViewBehavior",
+        "Polymer.SCUploadListViewBehavior"
+      ],
+      "observers": [],
+      "is": "sc-upload-listview",
+      "contentHref": "elements/sc-upload-listview/sc-upload-listview.html",
+      "demos": []
+    },
+    "Polymer.SCUploadViewBehavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadViewBehaviorImpl",
+      "is": "Polymer.SCUploadViewBehavior",
+      "properties": [
+        {
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property determines whether or not to download when an attached file item is double-clicked.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion function of attached files. If the value is `true`, the dropText phrase is displayed, and `false` the dropText phrase is not displayed.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "fileMap",
+          "type": "",
+          "desc": "\nReturns information about files in key and value format.\n"
+        },
+        {
+          "name": "files",
+          "type": "Array",
+          "desc": "\nThis is a list of attached files managed by the `<sc-upload-listview>` element.\n",
+          "published": true
+        },
+        {
+          "name": "getCustomizedStateImage",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "getStateImage",
+          "type": "Function",
+          "desc": "\nReturns a state class matching the state value\n",
+          "params": [
+            {
+              "name": "stateValue"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "interactDraggableElementRect",
+          "type": "Object",
+          "desc": "\nIf it is outside the drag area, it is automatically moved inside the drag area according to the set top, left, bottom, and right values. \nFor the left and right properties, 0 means the leftmost side of the element, and 1 means the rightmost side of the element. \nIn the top and bottom properties, 0 means the top of the element and 1 means the bottom.\nPlease refer to interactjs' draggable restrict.elementRect.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "name": "isAvailable",
+          "type": "Object",
+          "desc": "\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "processNullValue",
+          "type": "Function",
+          "desc": "\nReturns a status class that matches the status value (provided so that it can be used by customizing the image externally)\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of columns by dragging and dropping. It is activated when the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the column. It is activated if the value is `true`.\n",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": false,
+          "observer": "_interactPropertiesChanged"
+        },
+        {
+          "name": "selectedFileCount",
+          "type": "",
+          "desc": "\nReturns the number of selected file lists in listview.\n"
+        },
+        {
+          "name": "setAvailable",
+          "type": "Function",
+          "desc": "\nCheck the view in use among the set view types\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "sort",
+          "type": "Function",
+          "desc": "\nSort the file list.\n",
+          "params": [
+            {
+              "name": "field",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "direction",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t",
+          "published": true,
+          "notify": true
+        },
+        {
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t",
+          "published": true,
+          "notify": true,
+          "default": "asc"
+        },
+        {
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nsc-i18n This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_commonDestroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_computedDropInfo",
+          "type": "Function",
+          "desc": "\nReturns whether the dropText phrase of listview is used.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDblClick",
+          "type": "Function",
+          "desc": "\nWhen you double-click the content area of ​​the listview, an `add` event is propagated so that the file dialog is activated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepare",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_sortPropertyChanged",
+          "type": "Function",
+          "desc": "\nWhen the sorting criteria field changes, the sort function is called.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "attached",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        }
+      ],
+      "observers": [
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 1944,
+            "end": 1974,
+            "loc": {
+              "start": {
+                "line": 106,
+                "column": 2
+              },
+              "end": {
+                "line": 106,
+                "column": 32
+              }
+            },
+            "range": [
+              1944,
+              1974
+            ],
+            "value": "_filesChanged(files.splices)",
+            "raw": "'_filesChanged(files.splices)'"
+          },
+          "expression": "_filesChanged(files.splices)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 1978,
+            "end": 2030,
+            "loc": {
+              "start": {
+                "line": 107,
+                "column": 2
+              },
+              "end": {
+                "line": 107,
+                "column": 54
+              }
+            },
+            "range": [
+              1978,
+              2030
+            ],
+            "value": "_sortPropertyChanged(sortDataField, sortDirection)",
+            "raw": "'_sortPropertyChanged(sortDataField, sortDirection)'"
+          },
+          "expression": "_sortPropertyChanged(sortDataField, sortDirection)"
+        }
+      ],
+      "contentHref": "elements/sc-upload-view-behavior/sc-upload-view-behavior.html"
+    },
+    "Polymer.SCUploadListViewBehavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadListViewBehaviorImpl",
+      "is": "Polymer.SCUploadListViewBehavior",
+      "properties": [
+        {
+          "name": "headers",
+          "type": "",
+          "desc": "\nReturns all header elements in listview.\n"
+        },
+        {
+          "name": "listboxElement",
+          "type": "",
+          "desc": "\nReturns a `<sc-listbox>` element representing the list of files in the listview.\n"
+        },
+        {
+          "name": "listboxItemRenderFn",
+          "type": "Function",
+          "published": true,
+          "default": null,
+          "function": true
+        },
+        {
+          "name": "listboxTemplateElement",
+          "type": "",
+          "desc": "\nReturns a `<template>` element representing the list of files in the listview.\n"
+        },
+        {
+          "name": "listviewContentElement",
+          "type": "",
+          "desc": "\nReturns the content element of listview.\n"
+        },
+        {
+          "name": "listviewDummyElement",
+          "type": "",
+          "desc": "\nReturns the dummy element of listview.\n"
+        },
+        {
+          "name": "listviewHeaderElement",
+          "type": "",
+          "desc": "\nReturns the header element of listview.\n"
+        },
+        {
+          "name": "listviewSortedHeaderElement",
+          "type": "",
+          "desc": "\nReturns the sorted header elements of the listview's header.\n"
+        },
+        {
+          "name": "selectedFiles",
+          "type": "",
+          "desc": "\nReturns the list of selected files in listview.\n"
+        },
+        {
+          "name": "selectionAllElement",
+          "type": "",
+          "desc": "\nReturns the select all checkbox element of the listview header.\n"
+        },
+        {
+          "name": "setSelectItem",
+          "type": "Function",
+          "desc": "\nEnter a file and select an item.\n",
+          "params": [
+            {
+              "name": "fileList"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "showFileNameTooltip",
+          "type": "Object",
+          "desc": "\nTooltip?\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "size2String",
+          "type": "Function",
+          "desc": "\nReturns the file size in human-recognizable characters.\n",
+          "params": [
+            {
+              "name": "bytes",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "sort",
+          "type": "Function",
+          "desc": "\nSorts the file list in listview.\n",
+          "params": [
+            {
+              "name": "field",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "uploadTemplates",
+          "type": "",
+          "desc": "\nReturns the column information template of listview.\n"
+        },
+        {
+          "name": "uploadUtil",
+          "type": "Object",
+          "desc": "\nReturns SCUploadUtil.\n"
+        },
+        {
+          "name": "__i18nBundleName",
+          "type": "",
+          "desc": "\nsc-i18n property This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "_bind",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_computedAllSelectionDisabled",
+          "type": "Function",
+          "desc": "\nReturns whether the listview's select all checkbox is disabled.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedDropInfo",
+          "type": "Function",
+          "desc": "\nReturns whether the dropText phrase of listview is used.\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedFlexWidth",
+          "type": "Function",
+          "desc": "\nThe length of the listview variable size column is calculated and returned.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_filesChanged",
+          "type": "Function",
+          "desc": "\nIf the file list in listview changes and a sorted column exists, the file list is sorted.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_findTemplateElement",
+          "type": "Function",
+          "desc": "\nReturns the template element of listview column information.\n",
+          "params": [
+            {
+              "name": "templateId",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": null
+          }
+        },
+        {
+          "name": "_generateRowTemplate",
+          "type": "Function",
+          "desc": "\nCreate a listview file list template.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_interactDraggableTransform",
+          "type": "Function",
+          "desc": "\nWhen the header position or size of the listview changes, the file list is re-rendered.\n",
+          "params": [
+            {
+              "name": "target",
+              "type": "Element",
+              "desc": null
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "desc": null
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_interactPropertiesChanged",
+          "type": "Function",
+          "desc": "\nEnables or disables the sc-interact-behaviors function based on the reorderable and resizable property values ​​of the listview.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_isResizer",
+          "type": "Function",
+          "desc": "\nReturns whether there is an indicator element for header size change.\n",
+          "params": [
+            {
+              "name": "element",
+              "type": "Element",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_listboxItemRender",
+          "type": "Function",
+          "desc": "\nRender the file list in listview.\n",
+          "params": [
+            {
+              "name": "template",
+              "type": "Element",
+              "desc": null
+            },
+            {
+              "name": "position"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_listViewOffsetHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the sc-upload-listview element.\n",
+          "private": true
+        },
+        {
+          "name": "_listViewOffsetWidth",
+          "type": "Number",
+          "desc": "\nThis is the width value of the sc-upload-listview element.\n",
+          "private": true
+        },
+        {
+          "name": "_onAllSelectionChange",
+          "type": "Function",
+          "desc": "\nChange the selection state of the file list with the listview's all selection state change event handler.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onCustomFieldValueChanged",
+          "type": "Function",
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDblClick",
+          "type": "Function",
+          "desc": "\nWhen you double-click the content area of ​​the listview, an `add` event is propagated so that the file dialog is activated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDownload",
+          "type": "Function",
+          "desc": "\nWhen you double-click the file list in listview, a `download` event is propagated.\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onHeaderClick",
+          "type": "Function",
+          "desc": "\nThe listview's header area click event handler sorts the file list depending on whether sorting is used.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListboxItemSelect",
+          "type": "Function",
+          "desc": "\nWhen a file item in the listview is selected, an `item-select` event is propagated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListboxRender",
+          "type": "Function",
+          "desc": "\nThe file list rendering of listview is complete. The size of the header and file list is determined by the event handler.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListViewInteractDrag",
+          "type": "Function",
+          "desc": "\nWhen changing the header position of listview, the position of a copy of the header element is calculated and displayed on the screen.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListViewInteractDragEnd",
+          "type": "Function",
+          "desc": "\nWhen changing the header position of the listview is completed, the listview is re-rendered.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListViewInteractDragStart",
+          "type": "Function",
+          "desc": "\nInitializes the header position change or size change function of listview.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListViewListBoxRender",
+          "type": "Function",
+          "desc": "\nDelays rendering of the file list in listview.\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onListviewScroll",
+          "type": "Function",
+          "desc": "\nSynchronizes the scroll position of the header element with the scroll event handler of the listview's content area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onSelectionClick",
+          "type": "Function",
+          "desc": "\nWhen you select the file list in listview, the state of the Select All checkbox changes.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepare",
+          "type": "Function",
+          "desc": "\nInitialize listview.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepareTemplatize",
+          "type": "Function",
+          "desc": "\nInitialize the listview file list template.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_renderHeaders",
+          "type": "Function",
+          "desc": "\nCreates a listview header element.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_selectionChanged",
+          "type": "Function",
+          "desc": "\nWhen selecting or deselecting a list of files in a listview, a `select` or `deselect` event is propagated.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "doContentElementResize",
+          "type": "Function",
+          "desc": "\nThe size of the listview's content area is calculated and reflected.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "listeners",
+          "type": "Object",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "observers": [],
+      "behaviors": [],
+      "contentHref": "elements/sc-upload-listview/sc-upload-listview-behavior.html"
+    }
+  }
+}

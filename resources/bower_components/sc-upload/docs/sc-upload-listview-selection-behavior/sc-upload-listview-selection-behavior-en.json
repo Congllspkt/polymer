@@ -1,0 +1,242 @@
+{
+  "elements": [
+    {
+      "is": "Polymer.SCUploadListViewSelectionBehavior"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "Polymer.SCUploadListViewSelectionBehavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadListViewSelectionBehaviorImpl",
+      "is": "Polymer.SCUploadListViewSelectionBehavior",
+      "properties": [
+        {
+          "name": "checkbox",
+          "type": "",
+          "desc": "\nReturns the checkbox element used in header elements.\n"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "desc": "\nWhether or not the checkbox of the header element is activated. If the value is `true`, the select all function is disabled.\n",
+          "published": true,
+          "default": false,
+          "observer": "_disabledChanged"
+        },
+        {
+          "name": "generateHeader",
+          "type": "Function",
+          "desc": "\nCreates and returns a header element for the field.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "header"
+          }
+        },
+        {
+          "name": "generateTemplate",
+          "type": "Function",
+          "desc": "\nCreates a `template` for the field and returns an element with CSS style and binding syntax applied.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "template"
+          }
+        },
+        {
+          "name": "headerEventDisabled",
+          "type": "Boolean",
+          "desc": "\nDisable header functions (sorting, position movement, size change).\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "minWidth",
+          "type": "Number",
+          "desc": "\nThis is the minimum width of the field. When the `resizable` feature is enabled, the size cannot be changed to be smaller than minWidth.\n",
+          "published": true,
+          "default": 24
+        },
+        {
+          "name": "styleName",
+          "type": "String",
+          "desc": "\nThis is the CSS style name of the field.\n",
+          "published": true,
+          "default": "fileitem-selection"
+        },
+        {
+          "name": "width",
+          "type": "Number",
+          "desc": "\nThis is the width of the field.\n",
+          "published": true,
+          "default": 24
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_disabledChanged",
+          "type": "Function",
+          "desc": "\nWhen the disabled property value changes, the activation state of the checkbox of the header element changes.\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onCheckboxClick",
+          "type": "Function",
+          "desc": "\nPropagate the `check` event to the checkbox click event handler of the header element.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        }
+      ],
+      "observers": [],
+      "contentHref": "elements/sc-upload-listview-selection/sc-upload-listview-selection-behavior.html"
+    },
+    "sc-upload-listview-selection-behavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadListViewSelectionBehaviorImpl",
+      "is": "Polymer.SCUploadListViewSelectionBehavior",
+      "properties": [
+        {
+          "name": "checkbox",
+          "type": "",
+          "desc": "\nReturns the checkbox element used in header elements.\n"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "desc": "\nWhether or not the checkbox of the header element is activated. If the value is `true`, the select all function is disabled.\n",
+          "published": true,
+          "default": false,
+          "observer": "_disabledChanged"
+        },
+        {
+          "name": "generateHeader",
+          "type": "Function",
+          "desc": "\nCreates and returns a header element for the field.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "header"
+          }
+        },
+        {
+          "name": "generateTemplate",
+          "type": "Function",
+          "desc": "\nCreates a `template` for the field and returns an element with CSS style and binding syntax applied.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Element",
+            "desc": "template"
+          }
+        },
+        {
+          "name": "headerEventDisabled",
+          "type": "Boolean",
+          "desc": "\nDisable header functions (sorting, position movement, size change).\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "minWidth",
+          "type": "Number",
+          "desc": "\nThis is the minimum width of the field. When the `resizable` feature is enabled, the size cannot be changed to be smaller than minWidth.\n",
+          "published": true,
+          "default": 24
+        },
+        {
+          "name": "styleName",
+          "type": "String",
+          "desc": "\nThis is the CSS style name of the field.\n",
+          "published": true,
+          "default": "fileitem-selection"
+        },
+        {
+          "name": "width",
+          "type": "Number",
+          "desc": "\nThis is the width of the field.\n",
+          "published": true,
+          "default": 24
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_disabledChanged",
+          "type": "Function",
+          "desc": "\nWhen the disabled property value changes, the activation state of the checkbox of the header element changes.\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onCheckboxClick",
+          "type": "Function",
+          "desc": "\nPropagate the `check` event to the checkbox click event handler of the header element.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        }
+      ],
+      "observers": [],
+      "contentHref": "elements/sc-upload-listview-selection/sc-upload-listview-selection-behavior.html"
+    }
+  }
+}

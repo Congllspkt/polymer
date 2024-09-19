@@ -1,0 +1,174 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-thumbnail-box"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-thumbnail-box": {
+      "type": "element",
+      "desc": "\n``\n",
+      "events": [],
+      "properties": [
+        {
+          "name": "fileDesc",
+          "type": "Object",
+          "desc": "\nfile descriptor\n",
+          "published": true,
+          "observer": "_onChangeFileDescriptor"
+        },
+        {
+          "name": "index",
+          "type": "Object",
+          "desc": "\nIndex number within the list\n",
+          "published": true
+        },
+        {
+          "name": "isSelected",
+          "type": "Object",
+          "desc": "\nSelected or not\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "setSize",
+          "type": "Function",
+          "desc": "\nSet the size\n",
+          "params": [
+            {
+              "name": "width",
+              "type": "Integer",
+              "desc": null
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "setValue",
+          "type": "Function",
+          "desc": "\nSelected item settings\n",
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "stateIconClass",
+          "type": "Object",
+          "desc": "\nStatus Icon Class Value\n",
+          "published": true
+        },
+        {
+          "name": "supportedImageExtension",
+          "type": "Object",
+          "desc": "\nSupported image types\n",
+          "published": true,
+          "default": "[png, bmp]"
+        },
+        {
+          "name": "thumbnailRequestUrl",
+          "type": "String",
+          "desc": "\n",
+          "published": true,
+          "default": "/attachment/thumbnail.do"
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onChangeFileDescriptor",
+          "type": "Function",
+          "desc": "\nCalled when the state of the file descriptor changes.\n",
+          "params": [
+            {
+              "name": "newValue",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onClickCheck",
+          "type": "Function",
+          "desc": "\nWhen clicking the checkbox\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onClickThumbnail",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onClickThumbnailBox",
+          "type": "Function",
+          "desc": "\nEvent when clicking on thumbnail\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onResponseThumbnail",
+          "type": "Function",
+          "desc": "\nOutput a list of thumbnails using the thumbnail request response\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "detail"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_setUndefinedThumbnail",
+          "type": "Function",
+          "desc": "\nFor undefined types (if it is not an image), a new one is created (Caution) Use font-awesome\n",
+          "params": [
+            {
+              "name": "desc"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "listeners",
+          "type": "Object",
+          "private": true,
+          "configuration": true
+        }
+      ],
+      "behaviors": [],
+      "observers": [],
+      "is": "sc-upload-thumbnail-box",
+      "contentHref": "elements/sc-upload-thumbnail-box/sc-upload-thumbnail-box.html",
+      "demos": []
+    }
+  }
+}

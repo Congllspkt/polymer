@@ -1,0 +1,108 @@
+{
+  "elements": [
+    {
+      "is": "sc-upload-util"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "sc-upload-util": {
+      "type": "element",
+      "desc": "\nThe `<sc-upload-util>` element is a utility class that provides file-related functions.\n\n### Basic example\n    <script>\n        var size = SCUploadUtil.displaySizeToByte('100MB');\n        console.log(size); //104857600 output\n        var displaySize = SCUploadUtil.byteToDisplaySize(size);\n        console.log(displaySize); //100MB output\n    </script> \n",
+      "events": [],
+      "properties": [
+        {
+          "name": "byteToDisplaySize",
+          "type": "Function",
+          "desc": "\nConverts the file size to text using file size units and returns it.\n",
+          "params": [
+            {
+              "name": "bytes",
+              "type": "Number",
+              "desc": null
+            },
+            {
+              "name": "fn",
+              "type": "Function",
+              "desc": null
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "byteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nReturns the file size after converting it to fit the format.\n",
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "bytes",
+              "type": "Number",
+              "desc": null
+            },
+            {
+              "name": "unit",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "displaySizeToByte",
+          "type": "Function",
+          "desc": "\nReturns the characters including the file size unit by converting them to bytes.\n",
+          "params": [
+            {
+              "name": "displaySize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "Number",
+            "desc": null
+          }
+        },
+        {
+          "name": "thresh",
+          "type": "Number",
+          "desc": "\nThis is the unit value that measures the file size. (1024bytes -> 1KB)\n",
+          "published": true,
+          "default": 1024
+        },
+        {
+          "name": "units",
+          "type": "Array",
+          "desc": "\nThis is a collection of file size units.\n",
+          "published": true,
+          "readOnly": true,
+          "default": "[KB, MB, GB, TB, PB, EB]"
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "params": [],
+          "private": true,
+          "function": true
+        }
+      ],
+      "behaviors": [],
+      "observers": [],
+      "is": "sc-upload-util",
+      "contentHref": "elements/sc-upload-util/sc-upload-util.html",
+      "demos": []
+    }
+  }
+}

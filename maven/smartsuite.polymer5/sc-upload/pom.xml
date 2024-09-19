@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sc-upload</artifactId>
+	<version>5.1.0</version>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>smartsuite.polymer5</groupId>
+		<artifactId>polymer-project</artifactId>
+		<version>5.1.0</version>
+	</parent>
+
+	<properties>
+		<buildname>sc-upload</buildname>
+	</properties>
+	
+	<scm>
+		<url>http://dev.emro.co.kr/viewvc/rnd/improvement/ui/polymer/tags/sc-upload-5.1.0</url>
+		<developerConnection>scm:svn:http://dev.emro.co.kr/svn/rnd/improvement/ui/polymer/tags/sc-upload-5.1.0</developerConnection>
+		<connection>scm:svn:http://dev.emro.co.kr/svn/rnd/improvement/ui/polymer/tags/sc-upload-5.1.0</connection>
+	</scm>
+
+	<build>
+		<sourceDirectory>${basedir}</sourceDirectory>
+		<plugins>
+			<!-- polymer elements 기본 빌드 설정 -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+        			<execution>
+        				<id>resources</id>
+        				<goals>
+        					<goal>copy-resources</goal>
+        				</goals>
+        				<phase>prepare-package</phase>
+        				<configuration>
+        					<outputDirectory>${project.build.outputDirectory}/META-INF/resources/bower_components/${project.artifactId}</outputDirectory>
+        					<resources>
+        						<resource>
+        							<directory>${project.build.directory}/bower_components/${project.artifactId}</directory>
+        							<include>docs/**/*</include>
+        							<include>resources/**/*</include>
+        							<include>resources/smartsuite-upload/*.min.js</include>
+        							<exclude>resources/smartsuite-upload/*.js</exclude>
+        							<exclude>resources/language/*.json</exclude>
+        						</resource>
+        						<resource>
+        							<directory>${project.build.directory}/bower_components/${project.artifactId}/dist</directory>
+        						</resource>
+        					</resources>
+        				</configuration>
+        			</execution>
+        		</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>sc-upload.*</include>
+						<include>resources/**/*</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+			</plugin>
+			<!-- polymer elements 기본 빌드 설정 -->
+		</plugins>
+	</build>
+</project>

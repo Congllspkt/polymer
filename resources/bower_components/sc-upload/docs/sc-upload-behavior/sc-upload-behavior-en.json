@@ -1,0 +1,5570 @@
+{
+  "elements": [
+    {
+      "is": "Polymer.SCUploadBehavior"
+    }
+  ],
+  "behaviors": [],
+  "elementsByTagName": {
+    "Polymer.SCUploadBehavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [
+        {
+          "desc": "\nThis is the uploader object initialization event.\n",
+          "name": "clear",
+          "params": []
+        },
+        {
+          "desc": "\nThis is the uploader object removal event.\n",
+          "name": "destory",
+          "params": []
+        },
+        {
+          "desc": "\nThis is an upload error (HTTP error) event.\n",
+          "name": "error",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is error (error information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis event occurs after adding a file item.\n",
+          "name": "file-added",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is added array-type files (file list) information.",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis event occurs after deleting a file item.\n",
+          "name": "file-deleted",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is information about files (list of files) in array format to be deleted.",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a file status change completion event. Shows information about file upload success/failure.\n",
+          "name": "file-state-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldFile (old file state information) and newFile (current file state information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is an individual file upload progress change completion event.\n",
+          "name": "file-upload-progress-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldFile (previous file upload information) and newFile (current file upload information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a validation error event. Validity check logic is executed when adding a file, and if the validity filter is hit, this event is generated.\n",
+          "name": "filter-error",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is error (error information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nWhen a file item is selected, the event is propagated.\n",
+          "name": "item-select",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is index (file item index) and item (file information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a file search completion event. Information about the searched file is passed as an argument.\n",
+          "name": "load-complete",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is files (list of searched files).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the entire upload completion event.\n",
+          "name": "upload-completed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is progress (uploaded progress information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is an overall upload failure event.\n",
+          "name": "upload-failed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is progress (progress information for failed uploads).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the overall upload progress change completion event.\n",
+          "name": "upload-progress-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldProgess (previous upload progress information) and newProgess (current upload progress information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the entire upload status change completion event. Shows information about success/failure.\n",
+          "name": "upload-state-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldProgess (previous upload progress status information) and newProgess (current upload progress status information).",
+              "name": "event"
+            }
+          ]
+        }
+      ],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadBehaviorImpl",
+      "is": "Polymer.SCUploadBehavior",
+      "properties": [
+        {
+          "name": "addedText",
+          "type": "String",
+          "desc": "\nThis is the added phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "added"
+        },
+        {
+          "name": "addText",
+          "type": "String",
+          "desc": "\nThis is the name of the add file button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Add"
+        },
+        {
+          "name": "alertTitleText",
+          "type": "String",
+          "desc": "\nThis is the title text of the attached file message box.\n",
+          "published": true,
+          "default": "Attention"
+        },
+        {
+          "name": "allFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of all attached files.\n"
+        },
+        {
+          "name": "allFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the attached file.\n"
+        },
+        {
+          "name": "allowAllExtension",
+          "type": "String",
+          "desc": "\nThis property sets the extension of the file that can be attached.\n",
+          "published": true,
+          "default": "undefined"
+        },
+        {
+          "name": "attachmentError",
+          "type": "Function",
+          "desc": "Exception handling when viewing, deleting, or modifying",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "autoDelete",
+          "type": "Boolean",
+          "desc": "\nThis setting allows you to delete from the server at the same time you press the delete button.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "autoUpload",
+          "type": "Boolean",
+          "desc": "\nThis setting allows you to upload a file at the same time as attaching the file.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "btnAlignment",
+          "type": "String",
+          "desc": "\nThis is the button alignment property in the top toolbar.\n\t\t\t",
+          "published": true,
+          "default": "left"
+        },
+        {
+          "name": "caseSensitiveSorting",
+          "type": "Object",
+          "desc": "\nThis property is case sensitive when sorting attached files.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "clearAll",
+          "type": "Function",
+          "desc": "\nDelete all attachments in the list.\n",
+          "params": [
+            {
+              "name": "callbackFn",
+              "type": "Function",
+              "desc": "This is a callback function used when removing a specific target file. Removes only targets for which the return value is true."
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "confirmTitleText",
+          "type": "String",
+          "desc": "\nThis is the deletion title text in the attached file message box.\n",
+          "published": true,
+          "default": "Confirm"
+        },
+        {
+          "name": "customFilter",
+          "type": "String",
+          "desc": "\nThis is an attached file custom filter.\n\t\t\t",
+          "published": true
+        },
+        {
+          "name": "defaultDownloadFn",
+          "type": "Function",
+          "desc": "\nBasic download function\n",
+          "params": [
+            {
+              "name": "id",
+              "type": "String",
+              "desc": "Attachment ID to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "defaultDownloadZipFn",
+          "type": "Function",
+          "desc": "\nDownload multiple attachments as zip.\n",
+          "params": [
+            {
+              "name": "ids",
+              "type": "Array",
+              "desc": "List of attachment file IDs to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "deletable",
+          "type": "Boolean",
+          "desc": "\nWhether to activate the delete button. If the value is `true`, the delete button is activated. If the value is `false`, the delete button is disabled.\n",
+          "published": true,
+          "default": "true"
+        },
+        {
+          "name": "deleteConfirmText",
+          "type": "String",
+          "desc": "\nThis is the deletion message text in the attached file message box.\n",
+          "published": true,
+          "default": "Are you sure you want to delete this file?"
+        },
+        {
+          "name": "deleteFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for deleting attached files.\n",
+          "published": true,
+          "default": "attachment/delete.do"
+        },
+        {
+          "name": "deleteText",
+          "type": "String",
+          "desc": "\nThis is the name of the file deletion button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Delete"
+        },
+        {
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property is for downloading when double-clicking on the attached file list.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "download",
+          "type": "Function",
+          "desc": "\nDownload the attached file.\n",
+          "params": [
+            {
+              "name": "id",
+              "type": "String",
+              "desc": "Attachment ID to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "downloadable",
+          "type": "Boolean",
+          "desc": "\nWhether the download button is activated. If the value is 'true', the download button is activated.\n\t\t\t",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "downloadErrorText",
+          "type": "String",
+          "desc": "\nThis is a download error message in the attached file message box.\n",
+          "published": true,
+          "default": "file downloading error occurred."
+        },
+        {
+          "name": "downloadFileUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file download URL.\n",
+          "published": true,
+          "default": "attachment/download.do"
+        },
+        {
+          "name": "downloadText",
+          "type": "String",
+          "desc": "\nThis is the name of the file download button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Download"
+        },
+        {
+          "name": "downloadZip",
+          "type": "Function",
+          "desc": "\nDownload attached files, and if there are multiple files selected, compress them and download them.\n",
+          "params": [
+            {
+              "name": "ids",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "downloadZipFileUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file compression download URL.\n",
+          "published": true,
+          "default": "attachment/downloadZip.do"
+        },
+        {
+          "name": "dropText",
+          "type": "String",
+          "desc": "\nThis is the text displayed in the area where you can attach files by dragging and dropping.\n",
+          "published": true,
+          "default": "Double click here or drag the file."
+        },
+        {
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion functions of attached files. If the value is `true`, the file attachment and deletion buttons are activated, and if the value `false`, the download button is activated.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "extension",
+          "type": "String",
+          "desc": "\nThis property sets the extension of the file that can be attached.\n",
+          "published": true,
+          "default": "undefined"
+        },
+        {
+          "name": "fileDataTransferAllowed",
+          "type": "Boolean",
+          "desc": "\nThis setting allows file drag and drop.\n\t\t\t",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": true
+        },
+        {
+          "name": "formulas",
+          "type": "Object",
+          "desc": "\nThis is the attached file formula setting.\n\t\t "
+        },
+        {
+          "name": "getCustomFieldData",
+          "type": "Function",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "headers",
+          "type": "Object",
+          "desc": "\nThis is custom header information added to the request header when requesting attachment file upload, view, or deletion.\n",
+          "published": true,
+          "default": "{}"
+        },
+        {
+          "name": "hideBtnAdd",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the add file button. If the value is 'true', the add file button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnDelete",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the delete button. If the value is `true`, the delete button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnDownload",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the download button. If the value is 'true', the download button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnUpdate",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the edit button. If the value is `true`, the edit button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnUpload",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the upload button. If the value is 'true', the upload button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideSelectionColumn",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to display the selected column.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "hideStateColumn",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to display the status column.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "hideToolbar",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the top toolbar. If the value is 'true', the top toolbar is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideToolbarOnReadonly",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the top toolbar. If the value is `true`, the top toolbar is hidden when the readonly property is `true`.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideViewControl",
+          "type": "Object",
+          "desc": "\nHide type modifiers.\n\t\t\t ",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "isDirty",
+          "type": "Boolean",
+          "desc": "\nReturns the presence or absence of files that can be uploaded and deleted among attached files.\n"
+        },
+        {
+          "name": "limitedText",
+          "type": "String",
+          "desc": "\nThis is the restriction phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Limited"
+        },
+        {
+          "name": "load",
+          "type": "Function",
+          "desc": "\nView the list of attached files.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": "promise"
+          }
+        },
+        {
+          "name": "loadFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for viewing the list of attached files.\n",
+          "published": true,
+          "default": "attachment/list.do"
+        },
+        {
+          "name": "localFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of attached files that have not been uploaded.\n"
+        },
+        {
+          "name": "localFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the attached file that has not been uploaded.\n"
+        },
+        {
+          "name": "maxFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to limit the maximum file size that can be attached to each single file.\n",
+          "published": true,
+          "default": "10MB"
+        },
+        {
+          "name": "maximumText",
+          "type": "String",
+          "desc": "\nThis is the maximum text displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Max"
+        },
+        {
+          "name": "maxTotalFileCount",
+          "type": "Number",
+          "desc": "\nThis sets a limit on the maximum number of files that can be attached.\n",
+          "published": true,
+          "default": "100"
+        },
+        {
+          "name": "maxTotalFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to limit the total size of files that can be attached for each attached file component.\n",
+          "published": true,
+          "default": "Default set on server or 100MB"
+        },
+        {
+          "name": "minFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to set the minimum file size limit for each single file.\n",
+          "published": true,
+          "default": "0bytes"
+        },
+        {
+          "name": "parameters",
+          "type": "Object",
+          "desc": "\nThis is custom parameter information added to the attachment file list search and download request parameters.\n",
+          "published": true,
+          "default": "{}"
+        },
+        {
+          "name": "preventDuplicate",
+          "type": "Boolean",
+          "desc": "\nWith the same file name attachment restriction setting, if the value is `true`, the same file name can be attached.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "readonly",
+          "type": "Object",
+          "desc": "\nThis is a read-only property for attached files. If the value is `true`, the file attachment, deletion, and download functions are disabled.\n\t\t\t",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "remoteFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of attached files uploaded to the server.\n"
+        },
+        {
+          "name": "remoteFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the uploaded file among the attached files.\n"
+        },
+        {
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of List View columns by dragging and dropping. It is activated when the value is `true`.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "reset",
+          "type": "Function",
+          "desc": "\nInitializes the attachment component.\n\t\t ",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the List View column. It is activated when the value is `true`.\n\t\t\t",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "restrictFileName",
+          "type": "String",
+          "desc": "\nThis property sets the extension of files that cannot be attached.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "showFileNameTooltip",
+          "type": "Boolean",
+          "desc": "\nFile name tooltip status\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t\t",
+          "published": true
+        },
+        {
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t\t",
+          "published": true,
+          "default": "asc"
+        },
+        {
+          "name": "storageId",
+          "type": "String",
+          "desc": "\nrepository id\n",
+          "published": true,
+          "default": "default"
+        },
+        {
+          "name": "thumbnailHeight",
+          "type": "Number",
+          "desc": "\nHeight of thumbnail\n",
+          "published": true
+        },
+        {
+          "name": "thumbnailWidth",
+          "type": "Number",
+          "desc": "\nWidth of the thumbnail\n",
+          "published": true
+        },
+        {
+          "name": "titleText",
+          "type": "String",
+          "desc": "\nThis is the title name of the header area of ​​the `<sc-upload>` element.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "name": "totalFileCount",
+          "type": "Number",
+          "desc": "\nReturns the total number of attached files.\n"
+        },
+        {
+          "name": "totalText",
+          "type": "String",
+          "desc": "\nThis is the adjective of the phrase “attachable file size” displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Total"
+        },
+        {
+          "name": "unitText",
+          "type": "String",
+          "desc": "\nThis is the unit phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "files"
+        },
+        {
+          "name": "unlimitedText",
+          "type": "String",
+          "desc": "\nThis is an unlimited number of phrases displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Unlimited"
+        },
+        {
+          "name": "updatable",
+          "type": "Boolean",
+          "desc": "\nWhether to activate the edit button. If the value is `true`, the edit button is activated. If the value is `false`, the edit button is disabled.\n",
+          "published": true,
+          "default": "true"
+        },
+        {
+          "name": "update",
+          "type": "Function",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "updateFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for editing attached files.\n",
+          "published": true,
+          "default": "attachment/update.do"
+        },
+        {
+          "name": "updateText",
+          "type": "String",
+          "desc": "\nThis is the name of the file edit button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "modify"
+        },
+        {
+          "name": "upload",
+          "type": "Function",
+          "desc": "\nDelete and upload attached files.\n",
+          "params": [
+            {
+              "name": "promValue"
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": "promise"
+          }
+        },
+        {
+          "name": "uploadable",
+          "type": "Boolean",
+          "desc": "\nWhether the upload button is activated. If the value is 'true', the upload button is activated.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "uploaderUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file upload URL information.\n",
+          "published": true,
+          "default": "attachment/upload.do"
+        },
+        {
+          "name": "uploadFailedText",
+          "type": "String",
+          "desc": "\nThis is an upload failure message in the attached file message box.\n",
+          "published": true,
+          "default": "File upload failed."
+        },
+        {
+          "name": "uploadText",
+          "type": "String",
+          "desc": "\nThis is the name of the file upload button shown in the attachment file toolbar.\n",
+          "published": true,
+          "default": "Upload"
+        },
+        {
+          "name": "uploadUtil",
+          "type": "Object",
+          "desc": "\nReturns SCUploadUtil.\n"
+        },
+        {
+          "name": "useCustomField",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to use a custom field.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "useFetchDownload",
+          "type": "Object",
+          "desc": "\nPerform fetch download.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "useGetDownload",
+          "type": "Object",
+          "desc": "\nWhen downloading, whether to use Get Method (For Resumable Download)\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "useServerGroupId",
+          "type": "Boolean",
+          "desc": "\nThe group ID is received from the server.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "desc": "\nThis is the attached file group ID value.\n",
+          "published": true,
+          "notify": true
+        },
+        {
+          "name": "viewType",
+          "type": "String",
+          "desc": "\nThere are currently two view types: \nlist/thumbnail\n\t\t\t ",
+          "published": true,
+          "default": "list"
+        },
+        {
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nThis is the name to use as a prefix when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "__i18nBundleName",
+          "type": "",
+          "desc": "\nsc-i18n property This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "__i18nMessageBundleName",
+          "type": "",
+          "desc": "\nReturns the name that is the combination of bundleName and `.message`.\n",
+          "private": true
+        },
+        {
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundDragEnterHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag enter event handler for drag and drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundDragOverHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag-over event handler for drag-and-drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileAddedHandler",
+          "type": "Function",
+          "desc": "\nThis is the ‘FileAdded’ event handler in smartsuite-upload.js.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileDeletedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileDeleted' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileStateChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileStateChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileUploadCompleteHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileStateChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileUploadProgressChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileUploadProgressChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFilterErrorHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FilterError' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundOnDropHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag and drop event handler for drag and drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadCompletedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadCompleted' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadFailedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadFailed' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadProgressChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadProgressChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_computedFileBrowse",
+          "type": "Function",
+          "desc": "\nPerforms the conditions to activate the `Add File` button and returns the result.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            },
+            {
+              "name": "maxTotalFileCount",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedFileSize",
+          "type": "Function",
+          "desc": "\nCalculates and returns the size of the file list passed as an argument.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Number",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedHeader",
+          "type": "Function",
+          "desc": "\nPerforms the condition to show the attachment panel header and returns the result.\n",
+          "params": [
+            {
+              "name": "titleText",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "collapsible",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedHideToolbarOnReadonly",
+          "type": "Function",
+          "desc": "\nExecutes the conditions for hiding the top toolbar and returns the result.\n",
+          "params": [
+            {
+              "name": "readonly",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedToolbarBtnLocation",
+          "type": "Function",
+          "desc": "\nReturns the hiding result of sc-spacer to set the button position in the top toolbar.\n",
+          "params": [
+            {
+              "name": "btnAlignment"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedTotalText",
+          "type": "Function",
+          "desc": "\nReturns the adjective of the attachmentable file size phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUpload",
+          "type": "Function",
+          "desc": "\nExecutes the conditions to activate the ‘Upload’ button and returns the result.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadConfigLimitInfo",
+          "type": "Function",
+          "desc": "\nReturns the file size limit message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadConfigSizeInfo",
+          "type": "Function",
+          "desc": "\nReturns the file size limit message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadCurrentSizeInfo",
+          "type": "Function",
+          "desc": "\nReturns the attached file size message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_contentToolbar",
+          "type": "",
+          "private": true
+        },
+        {
+          "name": "_customFilterChanged",
+          "type": "Function",
+          "desc": "\nWhen the customFilter property changes, the custom filter is registered, modified, or deleted depending on its existence.\n",
+          "params": [
+            {
+              "name": "name"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_deletableChanged",
+          "type": "Function",
+          "desc": "\nWhen the deleteable property changes, the hidden property of the delete button changes.\n\t\t",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_deleteAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element for deleting attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_deleteFiles",
+          "type": "Array",
+          "desc": "\nThis is a temporary file list of files to be deleted among the attached files.\n",
+          "published": true,
+          "default": "[]",
+          "private": true
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_doContentElementResize",
+          "type": "Function",
+          "desc": "\nCalculates and applies the size of the attachment content area and propagates the `content-resize` event.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_downloadableChanged",
+          "type": "Function",
+          "desc": "\nWhen the downloadable property changes, the hidden property of the download button changes.\n\t\t",
+          "params": [
+            {
+              "name": "downloadable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_editableChanged",
+          "type": "Function",
+          "desc": "\nWhen the editable property changes, the hidden property of the add, delete, upload, and download buttons changes. \nThe editable property takes precedence over the uploadable, downloadable, and deletable properties.\n\t\t",
+          "params": [
+            {
+              "name": "editable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_errorMessageResolver",
+          "type": "Function",
+          "params": [
+            {
+              "name": "responseError"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_extensionChanged",
+          "type": "Function",
+          "desc": "\nIf the extension property changes, it is reconfigured with the extensions filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "extension",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_files",
+          "type": "Array",
+          "desc": "\nThis is a list of attachment files managed by the `<sc-upload>` element.\n",
+          "published": true,
+          "default": "[]",
+          "private": true
+        },
+        {
+          "name": "_filterPropertyChange",
+          "type": "Function",
+          "desc": "\nChange smartsuite-upload.js filter properties.\n",
+          "params": [
+            {
+              "name": "property",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_generateGroupId",
+          "type": "Function",
+          "desc": "\nCreate an attachment group ID.\n",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_generateGroupIdCallback",
+          "type": "Function",
+          "desc": "\nCreate an attachment group ID.\n",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_generatePromise",
+          "type": "Function",
+          "desc": "\nCreates and returns a Promise object to be used for uploading attachments.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_getAvailableCustomDataField",
+          "type": "Function",
+          "desc": "\nReturns a list of custom fields from the target data field list.\n",
+          "params": [
+            {
+              "name": "dataFieldList"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "List",
+            "desc": "List of field names of filtered custom fields"
+          }
+        },
+        {
+          "name": "_getGroupIdFromServer",
+          "type": "Function",
+          "desc": "\nWriting logic to receive group ID from TODO server\n\t\t ",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_getHeaders",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hasDeleteFiles",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment target for deletion exists.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_hasUploadFiles",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment file upload target exists.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_headersChanged",
+          "type": "Function",
+          "desc": "\nWhen the headers property changes, the uploader's headers setting date changes.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnAddChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpload property is changed, the add file button becomes hidden. \nThe hiddenBtnUpload property has higher priority than editable and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnDeleteChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnDelete property is changed, the delete button becomes hidden. \nThe hiddenBtnDelete property takes precedence over the editable, deletable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnDownloadChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnDownload property is changed, the download button becomes hidden. \nThe hiddenBtnDownload property takes precedence over editable, downloadable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnUpdateChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpdate property is changed, the edit button becomes hidden. \nThe hiddenBtnUpdate property takes precedence over editable, updatable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnUploadChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpload property is changed, the upload button becomes hidden. \nThe hiddenBtnUpload property takes precedence over the editable, uploadable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideToolbarChanged",
+          "type": "Function",
+          "desc": "\nHide/Show toolbar\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_isContentElementFit",
+          "type": "Boolean",
+          "desc": "\nReturns whether to use the content area as a variable size.\n",
+          "private": true
+        },
+        {
+          "name": "_isDeleting",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment deletion request is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_isProcessing",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment upload and deletion request is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_isUploading",
+          "type": "Function",
+          "desc": "\nReturns whether the attached file upload is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_loadAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element to search the list of attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_maxFileSizeChanged",
+          "type": "Function",
+          "desc": "\nIf the maxFileSize property changes, it is reconfigured with the maxFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_maxTotalFileCountChanged",
+          "type": "Function",
+          "desc": "\nIf the maxTotalFileCount property changes, it is reconfigured with the maxAllFileCount filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxTotalFileCount",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_maxTotalFileSizeChanged",
+          "type": "Function",
+          "desc": "\nWhen the maxTotalFileSize property changes, it is reconfigured with the maxAllFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_minFileSizeChanged",
+          "type": "Function",
+          "desc": "\nWhen the minFileSize property changes, it is reconfigured with the minFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "minFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAdd",
+          "type": "Function",
+          "desc": "\nClick the Add Attachment button to call the file dialog.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentDelete",
+          "type": "Function",
+          "desc": "\nPropagate the `delete-complete` event to the event handler for deleting the attachment list.\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "response"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentDeleteError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentLoad",
+          "type": "Function",
+          "desc": "\nAdd a file to the attachment file using the event handle of the attachment list query and propagate the `load-complete` event.\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "response"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentLoadError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentUpdateError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onChangeView",
+          "type": "Function",
+          "desc": "\nCalled when the view selection button is pressed\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onChangeViewType",
+          "type": "Function",
+          "desc": "\nCalled when the state of the current view type changes.\n",
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDelete",
+          "type": "Function",
+          "desc": "\nWhen you click the Delete Attached File button, the file is deleted by deciding whether to delete it or not.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDeselect",
+          "type": "Function",
+          "desc": "\nThe file selection event handler in the attachment view area calls the activation formula for the button on the toolbar.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDownload",
+          "type": "Function",
+          "desc": "\nWhen you click the attached file download button or the file name in the file list, the file is downloaded.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDragEnter",
+          "type": "Function",
+          "desc": "\nThis is the drag enter event handler for the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDragOver",
+          "type": "Function",
+          "desc": "\nThis is the drag over event handler for the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDrop",
+          "type": "Function",
+          "desc": "\nThis is the drag and drop event handler of the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileAdded",
+          "type": "Function",
+          "desc": "\nThis is a file addition event handler, and automatic upload is performed according to the autoUpload property setting value.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileDeleted",
+          "type": "Function",
+          "desc": "\nAttachment Removes deleted files from the list of files managed by the file deletion event handler.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileStateChanged",
+          "type": "Function",
+          "desc": "\nThis is a file status change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile",
+              "type": "Object",
+              "desc": null
+            },
+            {
+              "name": "newFile",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileUploadCompleted",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the file upload completion event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileUploadProgressChanged",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the file upload status change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFilterError",
+          "type": "Function",
+          "desc": "\nThe `filter-error` event is propagated to the event handler that is called when a file that exceeds the set conditions of the attachment filter (extension, size) is attached.\n",
+          "params": [
+            {
+              "name": "error",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onHideSelectionColumnChanged",
+          "type": "Function",
+          "desc": "\n",
+          "params": [
+            {
+              "name": "hideSelectionColumn"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onItemSelect",
+          "type": "Function",
+          "desc": "\nWhen a file item in the attached file view area is selected, an `item-select` event is propagated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onSelect",
+          "type": "Function",
+          "desc": "\nThe file selection event handler in the attachment view area calls the activation formula for the button on the toolbar.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUpdate",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": null
+          }
+        },
+        {
+          "name": "_onUpload",
+          "type": "Function",
+          "desc": "\nWhen you click the attachment upload button, the file is uploaded and the file to be deleted is deleted.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": null
+          }
+        },
+        {
+          "name": "_onUploadCompleted",
+          "type": "Function",
+          "desc": "\nPropagate the `upload-complete` event to the file upload success event handler.\n",
+          "params": [
+            {
+              "name": "progress"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUploadFailed",
+          "type": "Function",
+          "desc": "\nPropagate the `upload-failed` event to the file upload failure event handler.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUploadProgressChanged",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the overall upload progress change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepare",
+          "type": "Function",
+          "desc": "\nInitializes the attachment component.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_preventDuplicateChanged",
+          "type": "Function",
+          "desc": "\nIf the preventDuplicate property changes, it is reconfigured with the preventDuplicate filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "preventDuplicate",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_progressPopup",
+          "type": "",
+          "private": true
+        },
+        {
+          "name": "_readonlyChanged",
+          "type": "Function",
+          "desc": "\nWhen the readonly property is changed, the add, delete, upload, and download buttons are hidden. \nreadonly properties take precedence over editable, uploadable, downloadable, and deletable properties.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_removeSelectFiles",
+          "type": "Function",
+          "desc": "\nDelete the selected file.\n\t\t ",
+          "params": [
+            {
+              "name": "fn"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_restrictFileNameChanged",
+          "type": "Function",
+          "desc": "\nIf the restrictFileName property changes, it is reconfigured with the restrictFileName filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "restrictFileName",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_showUploadProgress",
+          "type": "Function",
+          "desc": "\nActivate the upload progress information pop-up.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_updatableChanged",
+          "type": "Function",
+          "desc": "\nWhen the updatable property changes, the hidden property of the edit button changes.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_updateAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element for editing attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadableChanged",
+          "type": "Function",
+          "desc": "\nWhen the uploadable property changes, the hidden property of the upload button changes.\n",
+          "params": [
+            {
+              "name": "uploadable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploader",
+          "type": "Object",
+          "desc": "\nCreates and returns a file uploader (SMART_UPLOADER).\n",
+          "private": true
+        },
+        {
+          "name": "_uploaderUrlChanged",
+          "type": "Function",
+          "desc": "\nIf the uploaderUrl property changes, reconfigure the url settings in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "url"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploadInfoElement",
+          "type": "Element",
+          "desc": "\nAttached file bottom toolbar area element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadInfoElementHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the information element at the bottom of the upload.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadProcessCompleted",
+          "type": "Function",
+          "desc": "\nIt is called when the attachment file upload is completed, and it searches the attachment file list and propagates the `upload-completed` event.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploadToolbarElement",
+          "type": "Element",
+          "desc": "\nThis is an attached file toolbar area element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadToolbarElementHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the upload top toolbar element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadTypeChanged",
+          "type": "Function",
+          "desc": "\nIf the uploadType property changes, reconfigure the uploadType setting in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "type",
+              "type": "String",
+              "desc": "upload type"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_valueChanged",
+          "type": "Function",
+          "desc": "\nWhen changing the value property, initialization of attached files or a list of attached files is requested.\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_viewer",
+          "type": "Element",
+          "desc": "\nReturns the view element of the attached file.\n",
+          "private": true
+        },
+        {
+          "name": "attached",
+          "type": "Function",
+          "desc": "\nPreparing to use sc-upload\n\t\t ",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        },
+        {
+          "name": "autoGenerateGroupId",
+          "type": "Boolean",
+          "desc": "\nAutomatic creation of file group ID\n",
+          "published": true,
+          "default": true,
+          "private": true
+        },
+        {
+          "name": "listboxItemRenderFn",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'listboxItemRenderFn' event handler.\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "uploadtype",
+          "type": "String",
+          "desc": "\nAsynchronous (async) and synchronous (sync) methods are provided as attachment file upload methods.\n",
+          "published": true,
+          "default": "async",
+          "private": true
+        },
+        {
+          "name": "validateFileDeleteFn",
+          "type": "Function",
+          "desc": "\nCheck file deletion validity\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "validateFileDownloadFn",
+          "type": "Function",
+          "desc": "\nCheck file download validity\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        }
+      ],
+      "observers": [
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31162,
+            "end": 31208,
+            "loc": {
+              "start": {
+                "line": 1416,
+                "column": 4
+              },
+              "end": {
+                "line": 1416,
+                "column": 50
+              }
+            },
+            "range": [
+              31162,
+              31208
+            ],
+            "value": "_maxTotalFileCountChanged(maxTotalFileCount)",
+            "raw": "'_maxTotalFileCountChanged(maxTotalFileCount)'"
+          },
+          "expression": "_maxTotalFileCountChanged(maxTotalFileCount)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31214,
+            "end": 31258,
+            "loc": {
+              "start": {
+                "line": 1417,
+                "column": 4
+              },
+              "end": {
+                "line": 1417,
+                "column": 48
+              }
+            },
+            "range": [
+              31214,
+              31258
+            ],
+            "value": "_maxTotalFileSizeChanged(maxTotalFileSize)",
+            "raw": "'_maxTotalFileSizeChanged(maxTotalFileSize)'"
+          },
+          "expression": "_maxTotalFileSizeChanged(maxTotalFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31264,
+            "end": 31298,
+            "loc": {
+              "start": {
+                "line": 1418,
+                "column": 4
+              },
+              "end": {
+                "line": 1418,
+                "column": 38
+              }
+            },
+            "range": [
+              31264,
+              31298
+            ],
+            "value": "_maxFileSizeChanged(maxFileSize)",
+            "raw": "'_maxFileSizeChanged(maxFileSize)'"
+          },
+          "expression": "_maxFileSizeChanged(maxFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31304,
+            "end": 31338,
+            "loc": {
+              "start": {
+                "line": 1419,
+                "column": 4
+              },
+              "end": {
+                "line": 1419,
+                "column": 38
+              }
+            },
+            "range": [
+              31304,
+              31338
+            ],
+            "value": "_minFileSizeChanged(minFileSize)",
+            "raw": "'_minFileSizeChanged(minFileSize)'"
+          },
+          "expression": "_minFileSizeChanged(minFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31344,
+            "end": 31393,
+            "loc": {
+              "start": {
+                "line": 1420,
+                "column": 4
+              },
+              "end": {
+                "line": 1420,
+                "column": 53
+              }
+            },
+            "range": [
+              31344,
+              31393
+            ],
+            "value": "_extensionChanged(extension, allowAllExtension)",
+            "raw": "'_extensionChanged(extension, allowAllExtension)'"
+          },
+          "expression": "_extensionChanged(extension, allowAllExtension)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31399,
+            "end": 31443,
+            "loc": {
+              "start": {
+                "line": 1421,
+                "column": 4
+              },
+              "end": {
+                "line": 1421,
+                "column": 48
+              }
+            },
+            "range": [
+              31399,
+              31443
+            ],
+            "value": "_restrictFileNameChanged(restrictFileName)",
+            "raw": "'_restrictFileNameChanged(restrictFileName)'"
+          },
+          "expression": "_restrictFileNameChanged(restrictFileName)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31449,
+            "end": 31481,
+            "loc": {
+              "start": {
+                "line": 1422,
+                "column": 4
+              },
+              "end": {
+                "line": 1422,
+                "column": 36
+              }
+            },
+            "range": [
+              31449,
+              31481
+            ],
+            "value": "_uploadTypeChanged(uploadtype)",
+            "raw": "'_uploadTypeChanged(uploadtype)'"
+          },
+          "expression": "_uploadTypeChanged(uploadtype)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31487,
+            "end": 31531,
+            "loc": {
+              "start": {
+                "line": 1423,
+                "column": 4
+              },
+              "end": {
+                "line": 1423,
+                "column": 48
+              }
+            },
+            "range": [
+              31487,
+              31531
+            ],
+            "value": "_preventDuplicateChanged(preventDuplicate)",
+            "raw": "'_preventDuplicateChanged(preventDuplicate)'"
+          },
+          "expression": "_preventDuplicateChanged(preventDuplicate)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31537,
+            "end": 31563,
+            "loc": {
+              "start": {
+                "line": 1424,
+                "column": 4
+              },
+              "end": {
+                "line": 1424,
+                "column": 30
+              }
+            },
+            "range": [
+              31537,
+              31563
+            ],
+            "value": "_headersChanged(headers)",
+            "raw": "'_headersChanged(headers)'"
+          },
+          "expression": "_headersChanged(headers)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31569,
+            "end": 31603,
+            "loc": {
+              "start": {
+                "line": 1425,
+                "column": 4
+              },
+              "end": {
+                "line": 1425,
+                "column": 38
+              }
+            },
+            "range": [
+              31569,
+              31603
+            ],
+            "value": "_uploaderUrlChanged(uploaderUrl)",
+            "raw": "'_uploaderUrlChanged(uploaderUrl)'"
+          },
+          "expression": "_uploaderUrlChanged(uploaderUrl)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31609,
+            "end": 31645,
+            "loc": {
+              "start": {
+                "line": 1426,
+                "column": 4
+              },
+              "end": {
+                "line": 1426,
+                "column": 40
+              }
+            },
+            "range": [
+              31609,
+              31645
+            ],
+            "value": "_customFilterChanged(customFilter)",
+            "raw": "'_customFilterChanged(customFilter)'"
+          },
+          "expression": "_customFilterChanged(customFilter)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31651,
+            "end": 31673,
+            "loc": {
+              "start": {
+                "line": 1427,
+                "column": 4
+              },
+              "end": {
+                "line": 1427,
+                "column": 26
+              }
+            },
+            "range": [
+              31651,
+              31673
+            ],
+            "value": "_valueChanged(value)",
+            "raw": "'_valueChanged(value)'"
+          },
+          "expression": "_valueChanged(value)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31679,
+            "end": 31713,
+            "loc": {
+              "start": {
+                "line": 1428,
+                "column": 4
+              },
+              "end": {
+                "line": 1428,
+                "column": 38
+              }
+            },
+            "range": [
+              31679,
+              31713
+            ],
+            "value": "_hideToolbarChanged(hideToolbar)",
+            "raw": "'_hideToolbarChanged(hideToolbar)'"
+          },
+          "expression": "_hideToolbarChanged(hideToolbar)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31719,
+            "end": 31757,
+            "loc": {
+              "start": {
+                "line": 1429,
+                "column": 4
+              },
+              "end": {
+                "line": 1429,
+                "column": 42
+              }
+            },
+            "range": [
+              31719,
+              31757
+            ],
+            "value": "_hideBtnDeleteChanged(hideBtnDelete)",
+            "raw": "'_hideBtnDeleteChanged(hideBtnDelete)'"
+          },
+          "expression": "_hideBtnDeleteChanged(hideBtnDelete)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31763,
+            "end": 31795,
+            "loc": {
+              "start": {
+                "line": 1430,
+                "column": 4
+              },
+              "end": {
+                "line": 1430,
+                "column": 36
+              }
+            },
+            "range": [
+              31763,
+              31795
+            ],
+            "value": "_hideBtnAddChanged(hideBtnAdd)",
+            "raw": "'_hideBtnAddChanged(hideBtnAdd)'"
+          },
+          "expression": "_hideBtnAddChanged(hideBtnAdd)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31801,
+            "end": 31839,
+            "loc": {
+              "start": {
+                "line": 1431,
+                "column": 4
+              },
+              "end": {
+                "line": 1431,
+                "column": 42
+              }
+            },
+            "range": [
+              31801,
+              31839
+            ],
+            "value": "_hideBtnUploadChanged(hideBtnUpload)",
+            "raw": "'_hideBtnUploadChanged(hideBtnUpload)'"
+          },
+          "expression": "_hideBtnUploadChanged(hideBtnUpload)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31845,
+            "end": 31883,
+            "loc": {
+              "start": {
+                "line": 1432,
+                "column": 4
+              },
+              "end": {
+                "line": 1432,
+                "column": 42
+              }
+            },
+            "range": [
+              31845,
+              31883
+            ],
+            "value": "_hideBtnUpdateChanged(hideBtnUpdate)",
+            "raw": "'_hideBtnUpdateChanged(hideBtnUpdate)'"
+          },
+          "expression": "_hideBtnUpdateChanged(hideBtnUpdate)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31889,
+            "end": 31931,
+            "loc": {
+              "start": {
+                "line": 1433,
+                "column": 4
+              },
+              "end": {
+                "line": 1433,
+                "column": 46
+              }
+            },
+            "range": [
+              31889,
+              31931
+            ],
+            "value": "_hideBtnDownloadChanged(hideBtnDownload)",
+            "raw": "'_hideBtnDownloadChanged(hideBtnDownload)'"
+          },
+          "expression": "_hideBtnDownloadChanged(hideBtnDownload)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31937,
+            "end": 31965,
+            "loc": {
+              "start": {
+                "line": 1434,
+                "column": 4
+              },
+              "end": {
+                "line": 1434,
+                "column": 32
+              }
+            },
+            "range": [
+              31937,
+              31965
+            ],
+            "value": "_editableChanged(editable)",
+            "raw": "'_editableChanged(editable)'"
+          },
+          "expression": "_editableChanged(editable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31971,
+            "end": 32003,
+            "loc": {
+              "start": {
+                "line": 1435,
+                "column": 4
+              },
+              "end": {
+                "line": 1435,
+                "column": 36
+              }
+            },
+            "range": [
+              31971,
+              32003
+            ],
+            "value": "_uploadableChanged(uploadable)",
+            "raw": "'_uploadableChanged(uploadable)'"
+          },
+          "expression": "_uploadableChanged(uploadable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32009,
+            "end": 32045,
+            "loc": {
+              "start": {
+                "line": 1436,
+                "column": 4
+              },
+              "end": {
+                "line": 1436,
+                "column": 40
+              }
+            },
+            "range": [
+              32009,
+              32045
+            ],
+            "value": "_downloadableChanged(downloadable)",
+            "raw": "'_downloadableChanged(downloadable)'"
+          },
+          "expression": "_downloadableChanged(downloadable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32051,
+            "end": 32081,
+            "loc": {
+              "start": {
+                "line": 1437,
+                "column": 4
+              },
+              "end": {
+                "line": 1437,
+                "column": 34
+              }
+            },
+            "range": [
+              32051,
+              32081
+            ],
+            "value": "_deletableChanged(deletable)",
+            "raw": "'_deletableChanged(deletable)'"
+          },
+          "expression": "_deletableChanged(deletable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32087,
+            "end": 32117,
+            "loc": {
+              "start": {
+                "line": 1438,
+                "column": 4
+              },
+              "end": {
+                "line": 1438,
+                "column": 34
+              }
+            },
+            "range": [
+              32087,
+              32117
+            ],
+            "value": "_updatableChanged(updatable)",
+            "raw": "'_updatableChanged(updatable)'"
+          },
+          "expression": "_updatableChanged(updatable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32123,
+            "end": 32151,
+            "loc": {
+              "start": {
+                "line": 1439,
+                "column": 4
+              },
+              "end": {
+                "line": 1439,
+                "column": 32
+              }
+            },
+            "range": [
+              32123,
+              32151
+            ],
+            "value": "_readonlyChanged(readonly)",
+            "raw": "'_readonlyChanged(readonly)'"
+          },
+          "expression": "_readonlyChanged(readonly)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32157,
+            "end": 32186,
+            "loc": {
+              "start": {
+                "line": 1440,
+                "column": 4
+              },
+              "end": {
+                "line": 1440,
+                "column": 33
+              }
+            },
+            "range": [
+              32157,
+              32186
+            ],
+            "value": "_onChangeViewType(viewType)",
+            "raw": "'_onChangeViewType(viewType)'"
+          },
+          "expression": "_onChangeViewType(viewType)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32192,
+            "end": 32244,
+            "loc": {
+              "start": {
+                "line": 1441,
+                "column": 4
+              },
+              "end": {
+                "line": 1441,
+                "column": 56
+              }
+            },
+            "range": [
+              32192,
+              32244
+            ],
+            "value": "_onHideSelectionColumnChanged(hideSelectionColumn)",
+            "raw": "'_onHideSelectionColumnChanged(hideSelectionColumn)'"
+          },
+          "expression": "_onHideSelectionColumnChanged(hideSelectionColumn)"
+        }
+      ],
+      "behaviors": [],
+      "contentHref": "sc-upload-behavior.html"
+    },
+    "sc-upload-behavior": {
+      "type": "behavior",
+      "desc": "\n",
+      "events": [
+        {
+          "desc": "\nThis is the uploader object initialization event.\n",
+          "name": "clear",
+          "params": []
+        },
+        {
+          "desc": "\nThis is the uploader object removal event.\n",
+          "name": "destory",
+          "params": []
+        },
+        {
+          "desc": "\nThis is an upload error (HTTP error) event.\n",
+          "name": "error",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is error (error information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis event occurs after adding a file item.\n",
+          "name": "file-added",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is added array-type files (file list) information.",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis event occurs after deleting a file item.\n",
+          "name": "file-deleted",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is information about files (list of files) in array format to be deleted.",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a file status change completion event. Shows information about file upload success/failure.\n",
+          "name": "file-state-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldFile (old file state information) and newFile (current file state information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is an individual file upload progress change completion event.\n",
+          "name": "file-upload-progress-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldFile (previous file upload information) and newFile (current file upload information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a validation error event. Validity check logic is executed when adding a file, and if the validity filter is hit, this event is generated.\n",
+          "name": "filter-error",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is error (error information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nWhen a file item is selected, the event is propagated.\n",
+          "name": "item-select",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is index (file item index) and item (file information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is a file search completion event. Information about the searched file is passed as an argument.\n",
+          "name": "load-complete",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is files (list of searched files).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the entire upload completion event.\n",
+          "name": "upload-completed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is progress (uploaded progress information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is an overall upload failure event.\n",
+          "name": "upload-failed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is progress (progress information for failed uploads).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the overall upload progress change completion event.\n",
+          "name": "upload-progress-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldProgess (previous upload progress information) and newProgess (current upload progress information).",
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "desc": "\nThis is the entire upload status change completion event. Shows information about success/failure.\n",
+          "name": "upload-state-changed",
+          "params": [
+            {
+              "type": "Event",
+              "desc": "`event.detail` is oldProgess (previous upload progress status information) and newProgess (current upload progress status information).",
+              "name": "event"
+            }
+          ]
+        }
+      ],
+      "demos": [
+        {
+          "desc": "demo",
+          "path": "demo/index.html"
+        }
+      ],
+      "symbol": "Polymer.SCUploadBehaviorImpl",
+      "is": "Polymer.SCUploadBehavior",
+      "properties": [
+        {
+          "name": "addedText",
+          "type": "String",
+          "desc": "\nThis is the added phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "added"
+        },
+        {
+          "name": "addText",
+          "type": "String",
+          "desc": "\nThis is the name of the add file button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Add"
+        },
+        {
+          "name": "alertTitleText",
+          "type": "String",
+          "desc": "\nThis is the title text of the attached file message box.\n",
+          "published": true,
+          "default": "Attention"
+        },
+        {
+          "name": "allFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of all attached files.\n"
+        },
+        {
+          "name": "allFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the attached file.\n"
+        },
+        {
+          "name": "allowAllExtension",
+          "type": "String",
+          "desc": "\nThis property sets the extension of the file that can be attached.\n",
+          "published": true,
+          "default": "undefined"
+        },
+        {
+          "name": "attachmentError",
+          "type": "Function",
+          "desc": "Exception handling when viewing, deleting, or modifying",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "autoDelete",
+          "type": "Boolean",
+          "desc": "\nThis setting allows you to delete from the server at the same time you press the delete button.\n",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "autoUpload",
+          "type": "Boolean",
+          "desc": "\nThis setting allows you to upload a file at the same time as attaching the file.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "btnAlignment",
+          "type": "String",
+          "desc": "\nThis is the button alignment property in the top toolbar.\n\t\t\t",
+          "published": true,
+          "default": "left"
+        },
+        {
+          "name": "caseSensitiveSorting",
+          "type": "Object",
+          "desc": "\nThis property is case sensitive when sorting attached files.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "clearAll",
+          "type": "Function",
+          "desc": "\nDelete all attachments in the list.\n",
+          "params": [
+            {
+              "name": "callbackFn",
+              "type": "Function",
+              "desc": "This is a callback function used when removing a specific target file. Removes only targets for which the return value is true."
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "confirmTitleText",
+          "type": "String",
+          "desc": "\nThis is the deletion title text in the attached file message box.\n",
+          "published": true,
+          "default": "Confirm"
+        },
+        {
+          "name": "customFilter",
+          "type": "String",
+          "desc": "\nThis is an attached file custom filter.\n\t\t\t",
+          "published": true
+        },
+        {
+          "name": "defaultDownloadFn",
+          "type": "Function",
+          "desc": "\nBasic download function\n",
+          "params": [
+            {
+              "name": "id",
+              "type": "String",
+              "desc": "Attachment ID to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "defaultDownloadZipFn",
+          "type": "Function",
+          "desc": "\nDownload multiple attachments as zip.\n",
+          "params": [
+            {
+              "name": "ids",
+              "type": "Array",
+              "desc": "List of attachment file IDs to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "deletable",
+          "type": "Boolean",
+          "desc": "\nWhether to activate the delete button. If the value is `true`, the delete button is activated. If the value is `false`, the delete button is disabled.\n",
+          "published": true,
+          "default": "true"
+        },
+        {
+          "name": "deleteConfirmText",
+          "type": "String",
+          "desc": "\nThis is the deletion message text in the attached file message box.\n",
+          "published": true,
+          "default": "Are you sure you want to delete this file?"
+        },
+        {
+          "name": "deleteFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for deleting attached files.\n",
+          "published": true,
+          "default": "attachment/delete.do"
+        },
+        {
+          "name": "deleteText",
+          "type": "String",
+          "desc": "\nThis is the name of the file deletion button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Delete"
+        },
+        {
+          "name": "doubleClickDownload",
+          "type": "Object",
+          "desc": "\nThis property is for downloading when double-clicking on the attached file list.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "download",
+          "type": "Function",
+          "desc": "\nDownload the attached file.\n",
+          "params": [
+            {
+              "name": "id",
+              "type": "String",
+              "desc": "Attachment ID to download"
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "downloadable",
+          "type": "Boolean",
+          "desc": "\nWhether the download button is activated. If the value is 'true', the download button is activated.\n\t\t\t",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "downloadErrorText",
+          "type": "String",
+          "desc": "\nThis is a download error message in the attached file message box.\n",
+          "published": true,
+          "default": "file downloading error occurred."
+        },
+        {
+          "name": "downloadFileUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file download URL.\n",
+          "published": true,
+          "default": "attachment/download.do"
+        },
+        {
+          "name": "downloadText",
+          "type": "String",
+          "desc": "\nThis is the name of the file download button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "Download"
+        },
+        {
+          "name": "downloadZip",
+          "type": "Function",
+          "desc": "\nDownload attached files, and if there are multiple files selected, compress them and download them.\n",
+          "params": [
+            {
+              "name": "ids",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "function": true
+        },
+        {
+          "name": "downloadZipFileUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file compression download URL.\n",
+          "published": true,
+          "default": "attachment/downloadZip.do"
+        },
+        {
+          "name": "dropText",
+          "type": "String",
+          "desc": "\nThis is the text displayed in the area where you can attach files by dragging and dropping.\n",
+          "published": true,
+          "default": "Double click here or drag the file."
+        },
+        {
+          "name": "editable",
+          "type": "Boolean",
+          "desc": "\nThis setting activates the file attachment and deletion functions of attached files. If the value is `true`, the file attachment and deletion buttons are activated, and if the value `false`, the download button is activated.\n",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "extension",
+          "type": "String",
+          "desc": "\nThis property sets the extension of the file that can be attached.\n",
+          "published": true,
+          "default": "undefined"
+        },
+        {
+          "name": "fileDataTransferAllowed",
+          "type": "Boolean",
+          "desc": "\nThis setting allows file drag and drop.\n\t\t\t",
+          "published": true,
+          "reflectToAttribute": "UNKNOWN",
+          "default": true
+        },
+        {
+          "name": "formulas",
+          "type": "Object",
+          "desc": "\nThis is the attached file formula setting.\n\t\t "
+        },
+        {
+          "name": "getCustomFieldData",
+          "type": "Function",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "headers",
+          "type": "Object",
+          "desc": "\nThis is custom header information added to the request header when requesting attachment file upload, view, or deletion.\n",
+          "published": true,
+          "default": "{}"
+        },
+        {
+          "name": "hideBtnAdd",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the add file button. If the value is 'true', the add file button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnDelete",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the delete button. If the value is `true`, the delete button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnDownload",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the download button. If the value is 'true', the download button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnUpdate",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the edit button. If the value is `true`, the edit button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideBtnUpload",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the upload button. If the value is 'true', the upload button is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideSelectionColumn",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to display the selected column.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "hideStateColumn",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to display the status column.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "hideToolbar",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the top toolbar. If the value is 'true', the top toolbar is hidden.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideToolbarOnReadonly",
+          "type": "Boolean",
+          "desc": "\nWhether to hide the top toolbar. If the value is `true`, the top toolbar is hidden when the readonly property is `true`.\n",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "hideViewControl",
+          "type": "Object",
+          "desc": "\nHide type modifiers.\n\t\t\t ",
+          "published": true,
+          "default": true
+        },
+        {
+          "name": "isDirty",
+          "type": "Boolean",
+          "desc": "\nReturns the presence or absence of files that can be uploaded and deleted among attached files.\n"
+        },
+        {
+          "name": "limitedText",
+          "type": "String",
+          "desc": "\nThis is the restriction phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Limited"
+        },
+        {
+          "name": "load",
+          "type": "Function",
+          "desc": "\nView the list of attached files.\n",
+          "params": [],
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": "promise"
+          }
+        },
+        {
+          "name": "loadFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for viewing the list of attached files.\n",
+          "published": true,
+          "default": "attachment/list.do"
+        },
+        {
+          "name": "localFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of attached files that have not been uploaded.\n"
+        },
+        {
+          "name": "localFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the attached file that has not been uploaded.\n"
+        },
+        {
+          "name": "maxFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to limit the maximum file size that can be attached to each single file.\n",
+          "published": true,
+          "default": "10MB"
+        },
+        {
+          "name": "maximumText",
+          "type": "String",
+          "desc": "\nThis is the maximum text displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Max"
+        },
+        {
+          "name": "maxTotalFileCount",
+          "type": "Number",
+          "desc": "\nThis sets a limit on the maximum number of files that can be attached.\n",
+          "published": true,
+          "default": "100"
+        },
+        {
+          "name": "maxTotalFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to limit the total size of files that can be attached for each attached file component.\n",
+          "published": true,
+          "default": "Default set on server or 100MB"
+        },
+        {
+          "name": "minFileSize",
+          "type": "String",
+          "desc": "\nYou can use bytes, KB, MB, GB, TB, PB, and EB units to set the minimum file size limit for each single file.\n",
+          "published": true,
+          "default": "0bytes"
+        },
+        {
+          "name": "parameters",
+          "type": "Object",
+          "desc": "\nThis is custom parameter information added to the attachment file list search and download request parameters.\n",
+          "published": true,
+          "default": "{}"
+        },
+        {
+          "name": "preventDuplicate",
+          "type": "Boolean",
+          "desc": "\nWith the same file name attachment restriction setting, if the value is `true`, the same file name can be attached.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "readonly",
+          "type": "Object",
+          "desc": "\nThis is a read-only property for attached files. If the value is `true`, the file attachment, deletion, and download functions are disabled.\n\t\t\t",
+          "published": true,
+          "default": false,
+          "reflectToAttribute": "UNKNOWN"
+        },
+        {
+          "name": "remoteFiles",
+          "type": "Array",
+          "desc": "\nReturns a list of attached files uploaded to the server.\n"
+        },
+        {
+          "name": "remoteFileSize",
+          "type": "Number",
+          "desc": "\nReturns the size of the uploaded file among the attached files.\n"
+        },
+        {
+          "name": "reorderable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the order of List View columns by dragging and dropping. It is activated when the value is `true`.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "reset",
+          "type": "Function",
+          "desc": "\nInitializes the attachment component.\n\t\t ",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "resizable",
+          "type": "Boolean",
+          "desc": "\nThis is a function that allows you to change the size of the List View column. It is activated when the value is `true`.\n\t\t\t",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "restrictFileName",
+          "type": "String",
+          "desc": "\nThis property sets the extension of files that cannot be attached.\n",
+          "published": true,
+          "default": "UNKNOWN"
+        },
+        {
+          "name": "showFileNameTooltip",
+          "type": "Boolean",
+          "desc": "\nFile name tooltip status\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "sortDataField",
+          "type": "String",
+          "desc": "\nThis is the field name that becomes the standard when sorting files.\n\t\t\t",
+          "published": true
+        },
+        {
+          "name": "sortDirection",
+          "type": "String",
+          "desc": "\nFile sort direction (asc/desc).\n\t\t\t",
+          "published": true,
+          "default": "asc"
+        },
+        {
+          "name": "storageId",
+          "type": "String",
+          "desc": "\nrepository id\n",
+          "published": true,
+          "default": "default"
+        },
+        {
+          "name": "thumbnailHeight",
+          "type": "Number",
+          "desc": "\nHeight of thumbnail\n",
+          "published": true
+        },
+        {
+          "name": "thumbnailWidth",
+          "type": "Number",
+          "desc": "\nWidth of the thumbnail\n",
+          "published": true
+        },
+        {
+          "name": "titleText",
+          "type": "String",
+          "desc": "\nThis is the title name of the header area of ​​the `<sc-upload>` element.\n",
+          "published": true,
+          "default": null
+        },
+        {
+          "name": "totalFileCount",
+          "type": "Number",
+          "desc": "\nReturns the total number of attached files.\n"
+        },
+        {
+          "name": "totalText",
+          "type": "String",
+          "desc": "\nThis is the adjective of the phrase “attachable file size” displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Total"
+        },
+        {
+          "name": "unitText",
+          "type": "String",
+          "desc": "\nThis is the unit phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "files"
+        },
+        {
+          "name": "unlimitedText",
+          "type": "String",
+          "desc": "\nThis is an unlimited number of phrases displayed in the toolbar at the bottom of the attached file.\n",
+          "published": true,
+          "default": "Unlimited"
+        },
+        {
+          "name": "updatable",
+          "type": "Boolean",
+          "desc": "\nWhether to activate the edit button. If the value is `true`, the edit button is activated. If the value is `false`, the edit button is disabled.\n",
+          "published": true,
+          "default": "true"
+        },
+        {
+          "name": "update",
+          "type": "Function",
+          "params": [],
+          "function": true
+        },
+        {
+          "name": "updateFileUrl",
+          "type": "String",
+          "desc": "\nThis is the URL for editing attached files.\n",
+          "published": true,
+          "default": "attachment/update.do"
+        },
+        {
+          "name": "updateText",
+          "type": "String",
+          "desc": "\nThis is the name of the file edit button shown in the attached file toolbar.\n",
+          "published": true,
+          "default": "modify"
+        },
+        {
+          "name": "upload",
+          "type": "Function",
+          "desc": "\nDelete and upload attached files.\n",
+          "params": [
+            {
+              "name": "promValue"
+            }
+          ],
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": "promise"
+          }
+        },
+        {
+          "name": "uploadable",
+          "type": "Boolean",
+          "desc": "\nWhether the upload button is activated. If the value is 'true', the upload button is activated.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "uploaderUrl",
+          "type": "String",
+          "desc": "\nThis is the attached file upload URL information.\n",
+          "published": true,
+          "default": "attachment/upload.do"
+        },
+        {
+          "name": "uploadFailedText",
+          "type": "String",
+          "desc": "\nThis is an upload failure message in the attached file message box.\n",
+          "published": true,
+          "default": "File upload failed."
+        },
+        {
+          "name": "uploadText",
+          "type": "String",
+          "desc": "\nThis is the name of the file upload button shown in the attachment file toolbar.\n",
+          "published": true,
+          "default": "Upload"
+        },
+        {
+          "name": "uploadUtil",
+          "type": "Object",
+          "desc": "\nReturns SCUploadUtil.\n"
+        },
+        {
+          "name": "useCustomField",
+          "type": "Boolean",
+          "desc": "\nThis property determines whether to use a custom field.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "useFetchDownload",
+          "type": "Object",
+          "desc": "\nPerform fetch download.\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "useGetDownload",
+          "type": "Object",
+          "desc": "\nWhen downloading, whether to use Get Method (For Resumable Download)\n\t\t\t ",
+          "published": true,
+          "default": false
+        },
+        {
+          "name": "useServerGroupId",
+          "type": "Boolean",
+          "desc": "\nThe group ID is received from the server.\n",
+          "published": true,
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "desc": "\nThis is the attached file group ID value.\n",
+          "published": true,
+          "notify": true
+        },
+        {
+          "name": "viewType",
+          "type": "String",
+          "desc": "\nThere are currently two view types: \nlist/thumbnail\n\t\t\t ",
+          "published": true,
+          "default": "list"
+        },
+        {
+          "name": "__bundleName",
+          "type": "",
+          "desc": "\nThis is the name to use as a prefix when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "__i18nBundleName",
+          "type": "",
+          "desc": "\nsc-i18n property This is the bundleName name used when processing multiple languages.\n",
+          "private": true
+        },
+        {
+          "name": "__i18nMessageBundleName",
+          "type": "",
+          "desc": "\nReturns the name that is the combination of bundleName and `.message`.\n",
+          "private": true
+        },
+        {
+          "name": "_boundByteToFormattedDisplaySize",
+          "type": "Function",
+          "desc": "\nThis function returns the file size by combining 2 decimal places and unit characters.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundDragEnterHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag enter event handler for drag and drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundDragOverHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag-over event handler for drag-and-drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileAddedHandler",
+          "type": "Function",
+          "desc": "\nThis is the ‘FileAdded’ event handler in smartsuite-upload.js.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileDeletedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileDeleted' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileStateChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileStateChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileUploadCompleteHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileStateChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFileUploadProgressChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FileUploadProgressChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundFilterErrorHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'FilterError' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundOnDropHandler",
+          "type": "Function",
+          "desc": "\nThis is a drag and drop event handler for drag and drop file attachment.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadCompletedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadCompleted' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadFailedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadFailed' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_boundUploadProgressChangedHandler",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'UploadProgressChanged' event handler.\n",
+          "published": true,
+          "default": "UNKNOWN",
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_computedFileBrowse",
+          "type": "Function",
+          "desc": "\nPerforms the conditions to activate the `Add File` button and returns the result.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            },
+            {
+              "name": "maxTotalFileCount",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedFileSize",
+          "type": "Function",
+          "desc": "\nCalculates and returns the size of the file list passed as an argument.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Number",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedHeader",
+          "type": "Function",
+          "desc": "\nPerforms the condition to show the attachment panel header and returns the result.\n",
+          "params": [
+            {
+              "name": "titleText",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "collapsible",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedHideToolbarOnReadonly",
+          "type": "Function",
+          "desc": "\nExecutes the conditions for hiding the top toolbar and returns the result.\n",
+          "params": [
+            {
+              "name": "readonly",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedToolbarBtnLocation",
+          "type": "Function",
+          "desc": "\nReturns the hiding result of sc-spacer to set the button position in the top toolbar.\n",
+          "params": [
+            {
+              "name": "btnAlignment"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedTotalText",
+          "type": "Function",
+          "desc": "\nReturns the adjective of the attachmentable file size phrase displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUpload",
+          "type": "Function",
+          "desc": "\nExecutes the conditions to activate the ‘Upload’ button and returns the result.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadConfigLimitInfo",
+          "type": "Function",
+          "desc": "\nReturns the file size limit message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadConfigSizeInfo",
+          "type": "Function",
+          "desc": "\nReturns the file size limit message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_computedUploadCurrentSizeInfo",
+          "type": "Function",
+          "desc": "\nReturns the attached file size message displayed in the toolbar at the bottom of the attached file.\n",
+          "params": [
+            {
+              "name": "splices",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "String",
+            "desc": null
+          }
+        },
+        {
+          "name": "_contentToolbar",
+          "type": "",
+          "private": true
+        },
+        {
+          "name": "_customFilterChanged",
+          "type": "Function",
+          "desc": "\nWhen the customFilter property changes, the custom filter is registered, modified, or deleted depending on its existence.\n",
+          "params": [
+            {
+              "name": "name"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_deletableChanged",
+          "type": "Function",
+          "desc": "\nWhen the deleteable property changes, the hidden property of the delete button changes.\n\t\t",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_deleteAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element for deleting attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_deleteFiles",
+          "type": "Array",
+          "desc": "\nThis is a temporary file list of files to be deleted among the attached files.\n",
+          "published": true,
+          "default": "[]",
+          "private": true
+        },
+        {
+          "name": "_destroy",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_doContentElementResize",
+          "type": "Function",
+          "desc": "\nCalculates and applies the size of the attachment content area and propagates the `content-resize` event.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_downloadableChanged",
+          "type": "Function",
+          "desc": "\nWhen the downloadable property changes, the hidden property of the download button changes.\n\t\t",
+          "params": [
+            {
+              "name": "downloadable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_editableChanged",
+          "type": "Function",
+          "desc": "\nWhen the editable property changes, the hidden property of the add, delete, upload, and download buttons changes. \nThe editable property takes precedence over the uploadable, downloadable, and deletable properties.\n\t\t",
+          "params": [
+            {
+              "name": "editable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_errorMessageResolver",
+          "type": "Function",
+          "params": [
+            {
+              "name": "responseError"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_extensionChanged",
+          "type": "Function",
+          "desc": "\nIf the extension property changes, it is reconfigured with the extensions filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "extension",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_files",
+          "type": "Array",
+          "desc": "\nThis is a list of attachment files managed by the `<sc-upload>` element.\n",
+          "published": true,
+          "default": "[]",
+          "private": true
+        },
+        {
+          "name": "_filterPropertyChange",
+          "type": "Function",
+          "desc": "\nChange smartsuite-upload.js filter properties.\n",
+          "params": [
+            {
+              "name": "property",
+              "type": "String",
+              "desc": null
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_generateGroupId",
+          "type": "Function",
+          "desc": "\nCreate an attachment group ID.\n",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_generateGroupIdCallback",
+          "type": "Function",
+          "desc": "\nCreate an attachment group ID.\n",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_generatePromise",
+          "type": "Function",
+          "desc": "\nCreates and returns a Promise object to be used for uploading attachments.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_getAvailableCustomDataField",
+          "type": "Function",
+          "desc": "\nReturns a list of custom fields from the target data field list.\n",
+          "params": [
+            {
+              "name": "dataFieldList"
+            }
+          ],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "List",
+            "desc": "List of field names of filtered custom fields"
+          }
+        },
+        {
+          "name": "_getGroupIdFromServer",
+          "type": "Function",
+          "desc": "\nWriting logic to receive group ID from TODO server\n\t\t ",
+          "params": [
+            {
+              "name": "callback"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_getHeaders",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hasDeleteFiles",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment target for deletion exists.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_hasUploadFiles",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment file upload target exists.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_headersChanged",
+          "type": "Function",
+          "desc": "\nWhen the headers property changes, the uploader's headers setting date changes.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnAddChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpload property is changed, the add file button becomes hidden. \nThe hiddenBtnUpload property has higher priority than editable and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnDeleteChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnDelete property is changed, the delete button becomes hidden. \nThe hiddenBtnDelete property takes precedence over the editable, deletable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnDownloadChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnDownload property is changed, the download button becomes hidden. \nThe hiddenBtnDownload property takes precedence over editable, downloadable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnUpdateChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpdate property is changed, the edit button becomes hidden. \nThe hiddenBtnUpdate property takes precedence over editable, updatable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideBtnUploadChanged",
+          "type": "Function",
+          "desc": "\nWhen the hiddenBtnUpload property is changed, the upload button becomes hidden. \nThe hiddenBtnUpload property takes precedence over the editable, uploadable, and readonly properties.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_hideToolbarChanged",
+          "type": "Function",
+          "desc": "\nHide/Show toolbar\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_isContentElementFit",
+          "type": "Boolean",
+          "desc": "\nReturns whether to use the content area as a variable size.\n",
+          "private": true
+        },
+        {
+          "name": "_isDeleting",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment deletion request is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_isProcessing",
+          "type": "Function",
+          "desc": "\nReturns whether the attachment upload and deletion request is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_isUploading",
+          "type": "Function",
+          "desc": "\nReturns whether the attached file upload is in progress.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Boolean",
+            "desc": null
+          }
+        },
+        {
+          "name": "_loadAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element to search the list of attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_maxFileSizeChanged",
+          "type": "Function",
+          "desc": "\nIf the maxFileSize property changes, it is reconfigured with the maxFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_maxTotalFileCountChanged",
+          "type": "Function",
+          "desc": "\nIf the maxTotalFileCount property changes, it is reconfigured with the maxAllFileCount filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxTotalFileCount",
+              "type": "Number",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_maxTotalFileSizeChanged",
+          "type": "Function",
+          "desc": "\nWhen the maxTotalFileSize property changes, it is reconfigured with the maxAllFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "maxTotalFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_minFileSizeChanged",
+          "type": "Function",
+          "desc": "\nWhen the minFileSize property changes, it is reconfigured with the minFileSize filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "minFileSize",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAdd",
+          "type": "Function",
+          "desc": "\nClick the Add Attachment button to call the file dialog.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentDelete",
+          "type": "Function",
+          "desc": "\nPropagate the `delete-complete` event to the event handler for deleting the attachment list.\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "response"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentDeleteError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentLoad",
+          "type": "Function",
+          "desc": "\nAdd a file to the attachment file using the event handle of the attachment list query and propagate the `load-complete` event.\n",
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "response"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentLoadError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onAttachmentUpdateError",
+          "type": "Function",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onChangeView",
+          "type": "Function",
+          "desc": "\nCalled when the view selection button is pressed\n",
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onChangeViewType",
+          "type": "Function",
+          "desc": "\nCalled when the state of the current view type changes.\n",
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDelete",
+          "type": "Function",
+          "desc": "\nWhen you click the Delete Attached File button, the file is deleted by deciding whether to delete it or not.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDeselect",
+          "type": "Function",
+          "desc": "\nThe file selection event handler in the attachment view area calls the activation formula for the button on the toolbar.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDownload",
+          "type": "Function",
+          "desc": "\nWhen you click the attached file download button or the file name in the file list, the file is downloaded.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDragEnter",
+          "type": "Function",
+          "desc": "\nThis is the drag enter event handler for the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDragOver",
+          "type": "Function",
+          "desc": "\nThis is the drag over event handler for the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onDrop",
+          "type": "Function",
+          "desc": "\nThis is the drag and drop event handler of the drag and drop area.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileAdded",
+          "type": "Function",
+          "desc": "\nThis is a file addition event handler, and automatic upload is performed according to the autoUpload property setting value.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileDeleted",
+          "type": "Function",
+          "desc": "\nAttachment Removes deleted files from the list of files managed by the file deletion event handler.\n",
+          "params": [
+            {
+              "name": "files",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileStateChanged",
+          "type": "Function",
+          "desc": "\nThis is a file status change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile",
+              "type": "Object",
+              "desc": null
+            },
+            {
+              "name": "newFile",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileUploadCompleted",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the file upload completion event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFileUploadProgressChanged",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the file upload status change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onFilterError",
+          "type": "Function",
+          "desc": "\nThe `filter-error` event is propagated to the event handler that is called when a file that exceeds the set conditions of the attachment filter (extension, size) is attached.\n",
+          "params": [
+            {
+              "name": "error",
+              "type": "Object",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onHideSelectionColumnChanged",
+          "type": "Function",
+          "desc": "\n",
+          "params": [
+            {
+              "name": "hideSelectionColumn"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onItemSelect",
+          "type": "Function",
+          "desc": "\nWhen a file item in the attached file view area is selected, an `item-select` event is propagated.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onSelect",
+          "type": "Function",
+          "desc": "\nThe file selection event handler in the attachment view area calls the activation formula for the button on the toolbar.\n",
+          "params": [
+            {
+              "name": "event",
+              "type": "Event",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUpdate",
+          "type": "Function",
+          "desc": "\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": null
+          }
+        },
+        {
+          "name": "_onUpload",
+          "type": "Function",
+          "desc": "\nWhen you click the attachment upload button, the file is uploaded and the file to be deleted is deleted.\n",
+          "params": [],
+          "private": true,
+          "function": true,
+          "return": {
+            "type": "Promise",
+            "desc": null
+          }
+        },
+        {
+          "name": "_onUploadCompleted",
+          "type": "Function",
+          "desc": "\nPropagate the `upload-complete` event to the file upload success event handler.\n",
+          "params": [
+            {
+              "name": "progress"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUploadFailed",
+          "type": "Function",
+          "desc": "\nPropagate the `upload-failed` event to the file upload failure event handler.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_onUploadProgressChanged",
+          "type": "Function",
+          "desc": "\nUpdate the upload progress with the overall upload progress change event handler.\n",
+          "params": [
+            {
+              "name": "oldFile"
+            },
+            {
+              "name": "newFile"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_prepare",
+          "type": "Function",
+          "desc": "\nInitializes the attachment component.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_preventDuplicateChanged",
+          "type": "Function",
+          "desc": "\nIf the preventDuplicate property changes, it is reconfigured with the preventDuplicate filter value of smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "preventDuplicate",
+              "type": "Boolean",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_progressPopup",
+          "type": "",
+          "private": true
+        },
+        {
+          "name": "_readonlyChanged",
+          "type": "Function",
+          "desc": "\nWhen the readonly property is changed, the add, delete, upload, and download buttons are hidden. \nreadonly properties take precedence over editable, uploadable, downloadable, and deletable properties.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_removeSelectFiles",
+          "type": "Function",
+          "desc": "\nDelete the selected file.\n\t\t ",
+          "params": [
+            {
+              "name": "fn"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_restrictFileNameChanged",
+          "type": "Function",
+          "desc": "\nIf the restrictFileName property changes, it is reconfigured with the restrictFileName filter value in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "restrictFileName",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_showUploadProgress",
+          "type": "Function",
+          "desc": "\nActivate the upload progress information pop-up.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_updatableChanged",
+          "type": "Function",
+          "desc": "\nWhen the updatable property changes, the hidden property of the edit button changes.\n\t\t ",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_updateAjaxElement",
+          "type": "Element",
+          "desc": "\nThis is a sc-ajax element for editing attached files.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadableChanged",
+          "type": "Function",
+          "desc": "\nWhen the uploadable property changes, the hidden property of the upload button changes.\n",
+          "params": [
+            {
+              "name": "uploadable"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploader",
+          "type": "Object",
+          "desc": "\nCreates and returns a file uploader (SMART_UPLOADER).\n",
+          "private": true
+        },
+        {
+          "name": "_uploaderUrlChanged",
+          "type": "Function",
+          "desc": "\nIf the uploaderUrl property changes, reconfigure the url settings in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "url"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploadInfoElement",
+          "type": "Element",
+          "desc": "\nAttached file bottom toolbar area element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadInfoElementHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the information element at the bottom of the upload.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadProcessCompleted",
+          "type": "Function",
+          "desc": "\nIt is called when the attachment file upload is completed, and it searches the attachment file list and propagates the `upload-completed` event.\n",
+          "params": [],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_uploadToolbarElement",
+          "type": "Element",
+          "desc": "\nThis is an attached file toolbar area element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadToolbarElementHeight",
+          "type": "Number",
+          "desc": "\nThis is the height value of the upload top toolbar element.\n",
+          "private": true
+        },
+        {
+          "name": "_uploadTypeChanged",
+          "type": "Function",
+          "desc": "\nIf the uploadType property changes, reconfigure the uploadType setting in smartsuite-upload.js.\n",
+          "params": [
+            {
+              "name": "type",
+              "type": "String",
+              "desc": "upload type"
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_valueChanged",
+          "type": "Function",
+          "desc": "\nWhen changing the value property, initialization of attached files or a list of attached files is requested.\n",
+          "params": [
+            {
+              "name": "value",
+              "type": "String",
+              "desc": null
+            }
+          ],
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "_viewer",
+          "type": "Element",
+          "desc": "\nReturns the view element of the attached file.\n",
+          "private": true
+        },
+        {
+          "name": "attached",
+          "type": "Function",
+          "desc": "\nPreparing to use sc-upload\n\t\t ",
+          "params": [],
+          "private": true,
+          "configuration": true,
+          "function": true
+        },
+        {
+          "name": "autoGenerateGroupId",
+          "type": "Boolean",
+          "desc": "\nAutomatic creation of file group ID\n",
+          "published": true,
+          "default": true,
+          "private": true
+        },
+        {
+          "name": "listboxItemRenderFn",
+          "type": "Function",
+          "desc": "\nsmartsuite-upload.js 'listboxItemRenderFn' event handler.\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "uploadtype",
+          "type": "String",
+          "desc": "\nAsynchronous (async) and synchronous (sync) methods are provided as attachment file upload methods.\n",
+          "published": true,
+          "default": "async",
+          "private": true
+        },
+        {
+          "name": "validateFileDeleteFn",
+          "type": "Function",
+          "desc": "\nCheck file deletion validity\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        },
+        {
+          "name": "validateFileDownloadFn",
+          "type": "Function",
+          "desc": "\nCheck file download validity\n",
+          "published": true,
+          "default": null,
+          "private": true,
+          "function": true
+        }
+      ],
+      "observers": [
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31162,
+            "end": 31208,
+            "loc": {
+              "start": {
+                "line": 1416,
+                "column": 4
+              },
+              "end": {
+                "line": 1416,
+                "column": 50
+              }
+            },
+            "range": [
+              31162,
+              31208
+            ],
+            "value": "_maxTotalFileCountChanged(maxTotalFileCount)",
+            "raw": "'_maxTotalFileCountChanged(maxTotalFileCount)'"
+          },
+          "expression": "_maxTotalFileCountChanged(maxTotalFileCount)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31214,
+            "end": 31258,
+            "loc": {
+              "start": {
+                "line": 1417,
+                "column": 4
+              },
+              "end": {
+                "line": 1417,
+                "column": 48
+              }
+            },
+            "range": [
+              31214,
+              31258
+            ],
+            "value": "_maxTotalFileSizeChanged(maxTotalFileSize)",
+            "raw": "'_maxTotalFileSizeChanged(maxTotalFileSize)'"
+          },
+          "expression": "_maxTotalFileSizeChanged(maxTotalFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31264,
+            "end": 31298,
+            "loc": {
+              "start": {
+                "line": 1418,
+                "column": 4
+              },
+              "end": {
+                "line": 1418,
+                "column": 38
+              }
+            },
+            "range": [
+              31264,
+              31298
+            ],
+            "value": "_maxFileSizeChanged(maxFileSize)",
+            "raw": "'_maxFileSizeChanged(maxFileSize)'"
+          },
+          "expression": "_maxFileSizeChanged(maxFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31304,
+            "end": 31338,
+            "loc": {
+              "start": {
+                "line": 1419,
+                "column": 4
+              },
+              "end": {
+                "line": 1419,
+                "column": 38
+              }
+            },
+            "range": [
+              31304,
+              31338
+            ],
+            "value": "_minFileSizeChanged(minFileSize)",
+            "raw": "'_minFileSizeChanged(minFileSize)'"
+          },
+          "expression": "_minFileSizeChanged(minFileSize)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31344,
+            "end": 31393,
+            "loc": {
+              "start": {
+                "line": 1420,
+                "column": 4
+              },
+              "end": {
+                "line": 1420,
+                "column": 53
+              }
+            },
+            "range": [
+              31344,
+              31393
+            ],
+            "value": "_extensionChanged(extension, allowAllExtension)",
+            "raw": "'_extensionChanged(extension, allowAllExtension)'"
+          },
+          "expression": "_extensionChanged(extension, allowAllExtension)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31399,
+            "end": 31443,
+            "loc": {
+              "start": {
+                "line": 1421,
+                "column": 4
+              },
+              "end": {
+                "line": 1421,
+                "column": 48
+              }
+            },
+            "range": [
+              31399,
+              31443
+            ],
+            "value": "_restrictFileNameChanged(restrictFileName)",
+            "raw": "'_restrictFileNameChanged(restrictFileName)'"
+          },
+          "expression": "_restrictFileNameChanged(restrictFileName)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31449,
+            "end": 31481,
+            "loc": {
+              "start": {
+                "line": 1422,
+                "column": 4
+              },
+              "end": {
+                "line": 1422,
+                "column": 36
+              }
+            },
+            "range": [
+              31449,
+              31481
+            ],
+            "value": "_uploadTypeChanged(uploadtype)",
+            "raw": "'_uploadTypeChanged(uploadtype)'"
+          },
+          "expression": "_uploadTypeChanged(uploadtype)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31487,
+            "end": 31531,
+            "loc": {
+              "start": {
+                "line": 1423,
+                "column": 4
+              },
+              "end": {
+                "line": 1423,
+                "column": 48
+              }
+            },
+            "range": [
+              31487,
+              31531
+            ],
+            "value": "_preventDuplicateChanged(preventDuplicate)",
+            "raw": "'_preventDuplicateChanged(preventDuplicate)'"
+          },
+          "expression": "_preventDuplicateChanged(preventDuplicate)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31537,
+            "end": 31563,
+            "loc": {
+              "start": {
+                "line": 1424,
+                "column": 4
+              },
+              "end": {
+                "line": 1424,
+                "column": 30
+              }
+            },
+            "range": [
+              31537,
+              31563
+            ],
+            "value": "_headersChanged(headers)",
+            "raw": "'_headersChanged(headers)'"
+          },
+          "expression": "_headersChanged(headers)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31569,
+            "end": 31603,
+            "loc": {
+              "start": {
+                "line": 1425,
+                "column": 4
+              },
+              "end": {
+                "line": 1425,
+                "column": 38
+              }
+            },
+            "range": [
+              31569,
+              31603
+            ],
+            "value": "_uploaderUrlChanged(uploaderUrl)",
+            "raw": "'_uploaderUrlChanged(uploaderUrl)'"
+          },
+          "expression": "_uploaderUrlChanged(uploaderUrl)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31609,
+            "end": 31645,
+            "loc": {
+              "start": {
+                "line": 1426,
+                "column": 4
+              },
+              "end": {
+                "line": 1426,
+                "column": 40
+              }
+            },
+            "range": [
+              31609,
+              31645
+            ],
+            "value": "_customFilterChanged(customFilter)",
+            "raw": "'_customFilterChanged(customFilter)'"
+          },
+          "expression": "_customFilterChanged(customFilter)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31651,
+            "end": 31673,
+            "loc": {
+              "start": {
+                "line": 1427,
+                "column": 4
+              },
+              "end": {
+                "line": 1427,
+                "column": 26
+              }
+            },
+            "range": [
+              31651,
+              31673
+            ],
+            "value": "_valueChanged(value)",
+            "raw": "'_valueChanged(value)'"
+          },
+          "expression": "_valueChanged(value)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31679,
+            "end": 31713,
+            "loc": {
+              "start": {
+                "line": 1428,
+                "column": 4
+              },
+              "end": {
+                "line": 1428,
+                "column": 38
+              }
+            },
+            "range": [
+              31679,
+              31713
+            ],
+            "value": "_hideToolbarChanged(hideToolbar)",
+            "raw": "'_hideToolbarChanged(hideToolbar)'"
+          },
+          "expression": "_hideToolbarChanged(hideToolbar)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31719,
+            "end": 31757,
+            "loc": {
+              "start": {
+                "line": 1429,
+                "column": 4
+              },
+              "end": {
+                "line": 1429,
+                "column": 42
+              }
+            },
+            "range": [
+              31719,
+              31757
+            ],
+            "value": "_hideBtnDeleteChanged(hideBtnDelete)",
+            "raw": "'_hideBtnDeleteChanged(hideBtnDelete)'"
+          },
+          "expression": "_hideBtnDeleteChanged(hideBtnDelete)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31763,
+            "end": 31795,
+            "loc": {
+              "start": {
+                "line": 1430,
+                "column": 4
+              },
+              "end": {
+                "line": 1430,
+                "column": 36
+              }
+            },
+            "range": [
+              31763,
+              31795
+            ],
+            "value": "_hideBtnAddChanged(hideBtnAdd)",
+            "raw": "'_hideBtnAddChanged(hideBtnAdd)'"
+          },
+          "expression": "_hideBtnAddChanged(hideBtnAdd)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31801,
+            "end": 31839,
+            "loc": {
+              "start": {
+                "line": 1431,
+                "column": 4
+              },
+              "end": {
+                "line": 1431,
+                "column": 42
+              }
+            },
+            "range": [
+              31801,
+              31839
+            ],
+            "value": "_hideBtnUploadChanged(hideBtnUpload)",
+            "raw": "'_hideBtnUploadChanged(hideBtnUpload)'"
+          },
+          "expression": "_hideBtnUploadChanged(hideBtnUpload)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31845,
+            "end": 31883,
+            "loc": {
+              "start": {
+                "line": 1432,
+                "column": 4
+              },
+              "end": {
+                "line": 1432,
+                "column": 42
+              }
+            },
+            "range": [
+              31845,
+              31883
+            ],
+            "value": "_hideBtnUpdateChanged(hideBtnUpdate)",
+            "raw": "'_hideBtnUpdateChanged(hideBtnUpdate)'"
+          },
+          "expression": "_hideBtnUpdateChanged(hideBtnUpdate)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31889,
+            "end": 31931,
+            "loc": {
+              "start": {
+                "line": 1433,
+                "column": 4
+              },
+              "end": {
+                "line": 1433,
+                "column": 46
+              }
+            },
+            "range": [
+              31889,
+              31931
+            ],
+            "value": "_hideBtnDownloadChanged(hideBtnDownload)",
+            "raw": "'_hideBtnDownloadChanged(hideBtnDownload)'"
+          },
+          "expression": "_hideBtnDownloadChanged(hideBtnDownload)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31937,
+            "end": 31965,
+            "loc": {
+              "start": {
+                "line": 1434,
+                "column": 4
+              },
+              "end": {
+                "line": 1434,
+                "column": 32
+              }
+            },
+            "range": [
+              31937,
+              31965
+            ],
+            "value": "_editableChanged(editable)",
+            "raw": "'_editableChanged(editable)'"
+          },
+          "expression": "_editableChanged(editable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 31971,
+            "end": 32003,
+            "loc": {
+              "start": {
+                "line": 1435,
+                "column": 4
+              },
+              "end": {
+                "line": 1435,
+                "column": 36
+              }
+            },
+            "range": [
+              31971,
+              32003
+            ],
+            "value": "_uploadableChanged(uploadable)",
+            "raw": "'_uploadableChanged(uploadable)'"
+          },
+          "expression": "_uploadableChanged(uploadable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32009,
+            "end": 32045,
+            "loc": {
+              "start": {
+                "line": 1436,
+                "column": 4
+              },
+              "end": {
+                "line": 1436,
+                "column": 40
+              }
+            },
+            "range": [
+              32009,
+              32045
+            ],
+            "value": "_downloadableChanged(downloadable)",
+            "raw": "'_downloadableChanged(downloadable)'"
+          },
+          "expression": "_downloadableChanged(downloadable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32051,
+            "end": 32081,
+            "loc": {
+              "start": {
+                "line": 1437,
+                "column": 4
+              },
+              "end": {
+                "line": 1437,
+                "column": 34
+              }
+            },
+            "range": [
+              32051,
+              32081
+            ],
+            "value": "_deletableChanged(deletable)",
+            "raw": "'_deletableChanged(deletable)'"
+          },
+          "expression": "_deletableChanged(deletable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32087,
+            "end": 32117,
+            "loc": {
+              "start": {
+                "line": 1438,
+                "column": 4
+              },
+              "end": {
+                "line": 1438,
+                "column": 34
+              }
+            },
+            "range": [
+              32087,
+              32117
+            ],
+            "value": "_updatableChanged(updatable)",
+            "raw": "'_updatableChanged(updatable)'"
+          },
+          "expression": "_updatableChanged(updatable)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32123,
+            "end": 32151,
+            "loc": {
+              "start": {
+                "line": 1439,
+                "column": 4
+              },
+              "end": {
+                "line": 1439,
+                "column": 32
+              }
+            },
+            "range": [
+              32123,
+              32151
+            ],
+            "value": "_readonlyChanged(readonly)",
+            "raw": "'_readonlyChanged(readonly)'"
+          },
+          "expression": "_readonlyChanged(readonly)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32157,
+            "end": 32186,
+            "loc": {
+              "start": {
+                "line": 1440,
+                "column": 4
+              },
+              "end": {
+                "line": 1440,
+                "column": 33
+              }
+            },
+            "range": [
+              32157,
+              32186
+            ],
+            "value": "_onChangeViewType(viewType)",
+            "raw": "'_onChangeViewType(viewType)'"
+          },
+          "expression": "_onChangeViewType(viewType)"
+        },
+        {
+          "javascriptNode": {
+            "type": "Literal",
+            "start": 32192,
+            "end": 32244,
+            "loc": {
+              "start": {
+                "line": 1441,
+                "column": 4
+              },
+              "end": {
+                "line": 1441,
+                "column": 56
+              }
+            },
+            "range": [
+              32192,
+              32244
+            ],
+            "value": "_onHideSelectionColumnChanged(hideSelectionColumn)",
+            "raw": "'_onHideSelectionColumnChanged(hideSelectionColumn)'"
+          },
+          "expression": "_onHideSelectionColumnChanged(hideSelectionColumn)"
+        }
+      ],
+      "behaviors": [],
+      "contentHref": "sc-upload-behavior.html"
+    }
+  }
+}
